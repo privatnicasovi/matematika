@@ -35,6 +35,25 @@ header .container {
   gap: 12px;
 }
 
+/* --- Zlatni naslov --- */
+.gold-text {
+  font-size: 28px;
+  font-weight: 700;
+  background: linear-gradient(180deg, #ffd700, #b8860b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 1px 1px 2px #000, 0 0 4px #000;
+  letter-spacing: 1px;
+}
+
+.subtitle {
+  font-size: 15px;
+  color: #f0c929;
+  text-shadow: 1px 1px 2px #000;
+  margin-top: 2px;
+  font-weight: 500;
+}
+
 .logo {
   background: #facc15;
   color: #111;
@@ -204,3 +223,4 @@ footer {
     font-size: 20px;
   }
 }
+
