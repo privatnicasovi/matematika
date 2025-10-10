@@ -71,6 +71,12 @@ nav a:hover {
   box-shadow: 0 1px 6px rgba(0,0,0,0.1);
 }
 
+.card img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px; /* opcionalno, zaobljeni uglovi */
+}
+
 .card.small {
   background: #fefce8;
 }
@@ -112,6 +118,7 @@ footer {
   color: #ffd700;
   margin-top: 30px;
 }
+
 
 
 
