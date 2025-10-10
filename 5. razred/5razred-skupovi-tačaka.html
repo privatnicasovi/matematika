@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Matematika — Skupovi tačaka (5. razred)</title>
+  <meta name="description" content="Teorija, primeri i vežbe o skupovima tačaka za 5. razred osnovne škole.">
+  <link rel="stylesheet" href="5. razred/style5.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="brand">
+        <div class="logo">M</div>
+        <div>
+          <h1 style="margin:0">Matematika — 5. razred</h1>
+          <div class="muted">Teorija, zadaci i vežbe za osnovce</div>
+        </div>
+      </div>
+      <nav>
+        <a href="../index.html">Početna</a>
+        <a href="5razred.html">5. razred</a>
+        <a href="deljivost.html">Deljivost</a>
+        <a href="5razred-prirodni-brojevi.html">Prirodni brojevi</a>
+        <a href="5razred-razlomci.html">Razlomci</a>
+        <a href="5razred-skupovi-tačaka.html" class="active">Skupovi tačaka</a>
+        <a href="#kontakt">Kontakt</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card" id="teorija">
+      <h2>Skupovi tačaka — teorija</h2>
+      <p>Skup tačaka je zbirka različitih tačaka u ravni ili prostoru. U 5. razredu učimo:</p>
+      <ul>
+        <li>Skup se može zapisati nabrajanjem tačaka: <strong>A = {P, Q, R}</strong>.</li>
+        <li>Presek skupova: <strong>A ∩ B</strong> su tačke koje pripadaju i A i B.</li>
+        <li>Unija skupova: <strong>A ∪ B</strong> su sve tačke koje pripadaju A ili B.</li>
+        <li>Razlika skupova: <strong>A \ B</strong> su tačke koje pripadaju samo skupu A.</li>
+      </ul>
+    </section>
+
+    <section class="card" id="primeri">
+      <h2>Primeri zadataka</h2>
+      <ul>
+        <li>Skup A = {P, Q, R}, skup B = {Q, R, S}. Napiši A ∩ B, A ∪ B i A \ B.</li>
+        <li>Skup C = {X, Y, Z}, skup D = {Y, Z, W}. Koje tačke su u preseku i uniji?</li>
+      </ul>
+    </section>
+
+    <section class="card" id="vezbe">
+      <h2>Vežbe — generiši zadatke</h2>
+      <div style="display:flex;gap:12px;align-items:center;margin-bottom:12px">
+        <label for="numTasks">Broj zadataka:</label>
+        <select id="numTasks">
+          <option>3</option>
+          <option selected>5</option>
+          <option>10</option>
+        </select>
+        <button class="btn" id="genTasks">Generiši zadatke</button>
+      </div>
+      <div id="tasks"></div>
+    </section>
+
+    <section class="card" id="kontakt" style="margin-top:20px">
+      <h2>Kontakt</h2>
+      <p class="small muted">
+        Za pitanja i sugestije: <strong>lakodomate@gmail.com</strong><br />
+        Telefon: 069 1 22 33 50
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container small">© 2025 Matematika — 5. razred. Napravljeno sa ♥.</div>
+  </footer>
+
+  <script>
+    // Generator zadataka za skupove tačaka
+    function renderTasks() {
+      const container = document.getElementById('tasks');
+      container.innerHTML = '';
+      const numTasks = parseInt(document.getElementById('numTasks').value, 10) || 5;
+      const points = ['A','B','C','D','E','F','G','H','I','J','K','L'];
+      for (let i = 0; i < numTasks; i++) {
+        // nasumično odaberi veličinu skupova
+        const sizeA = Math.floor(Math.random()*4 + 2); // 2-5 tačaka
+        const sizeB = Math.floor(Math.random()*4 + 2);
+        const shuffle = arr => arr.sort(()=>0.5-Math.random());
+        const A = shuffle(points).slice(0,sizeA);
+        const B = shuffle(points).slice(0,sizeB);
+        const el = document.createElement('div');
+        el.className = 'exercise';
+        el.innerHTML = `
+          <strong>Zadatak ${i+1}:</strong> Skup A = {${A.join(', ')}}, skup B = {${B.join(', ')}}.<br>
+          a) Presek: A ∩ B<br>
+          b) Unija: A ∪ B<br>
+          c) Razlika: A \ B
+        `;
+        container.appendChild(el);
+      }
+    }
+
+    document.getElementById('genTasks').addEventListener('click', renderTasks);
+    renderTasks();
+  </script>
+</body>
+</html>
