@@ -4,8 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Skupovi tačaka — 5. razred</title>
-  
-   <link rel="stylesheet" href="style5.css">
+  <link rel="stylesheet" href="style5.css">
 </head>
 <body>
   <header>
@@ -20,17 +19,15 @@
       <nav>
         <a href="../index.html">Početna</a>
         <a href="5razred.html">5. razred</a>
-        
         <a href="deljivost.html">Deljivost</a>
         <a href="5razred-skupovi.html">Skupovi i operacije</a>
         <a href="5razred-prirodni-brojevi.html">Prirodni brojevi</a>
         <a href="5razred-razlomci.html">Razlomci</a>
-        <a href="5razred-skupovi-tačaka.html">Skupovi tačaka</a>
-        <a href="5razerd-ugao.html">Ugao</a>
+        <a href="5razred-skupovi-tačaka.html" class="active">Skupovi tačaka</a>
+        <a href="5razred-ugao.html">Ugao</a>
         <a href="5razred-osna-simetrija.html">Osna simetrija</a>
         <a href="5razred-translacija.html">Translacija</a>
-        <a href="5razred-rotacija.html" class="active">Rotacija</a>
-       
+        <a href="5razred-rotacija.html">Rotacija</a>
         <a href="#kontakt">Kontakt</a>
       </nav>
     </div>
@@ -43,31 +40,44 @@
   </div>
 
   <main class="container">
+    <!-- 1. Geometrijske figure -->
     <section class="card">
       <h2>1. Geometrijske figure kao skupovi tačaka</h2>
-      <p class="muted small">Nacrtaj trougao i kvadrat koristeći SVG da vidiš tačke koje ih čine.</p>
-      <svg width="200" height="200">
-        <!-- Trougao -->
-        <polygon points="50,150 150,150 100,50" fill="#60a5fa" fill-opacity="0.4" stroke="#2563eb" stroke-width="2"></polygon>
-        <!-- Kvadrat -->
-        <rect x="50" y="50" width="50" height="50" fill="#facc15" fill-opacity="0.4" stroke="#d97706" stroke-width="2"></rect>
-      </svg>
-    </section>
-
-    <section class="card">
-      <h2>2. Konveksni skupovi tačaka</h2>
-      <p class="muted small">Skup je konveksan ako linija između bilo koje dve tačke ostaje unutar skupa.</p>
-      <svg width="200" height="150">
-        <polygon points="20,130 100,20 180,130" fill="#34d399" fill-opacity="0.4" stroke="#059669" stroke-width="2"></polygon>
+      <p class="muted small">
+        Svaka geometrijska figura se može posmatrati kao skup tačaka u ravni.
+        Primer: trougao, kvadrat ili kružnica.
+      </p>
+      <svg width="220" height="220">
+        <polygon points="60,160 160,160 110,60" fill="#60a5fa" fill-opacity="0.4" stroke="#2563eb" stroke-width="2"></polygon>
+        <rect x="60" y="60" width="60" height="60" fill="#facc15" fill-opacity="0.4" stroke="#d97706" stroke-width="2"></rect>
       </svg>
       <div class="exercise small">
-        <strong>Zadatak:</strong> Probaj da spojiš bilo koje dve tačke unutar trougla i proveri da li linija ostaje unutar.
+        <strong>Zadatak:</strong> Označi sve tačke koje pripadaju trouglu, a ne pripadaju kvadratu.
       </div>
     </section>
 
+    <!-- 2. Konveksni skupovi -->
+    <section class="card">
+      <h2>2. Konveksni skupovi tačaka</h2>
+      <p class="muted small">
+        Skup je konveksan ako linija koja spaja bilo koje dve tačke skupa ostaje unutar skupa.
+      </p>
+      <svg width="220" height="160">
+        <polygon points="30,140 110,30 190,140" fill="#34d399" fill-opacity="0.4" stroke="#059669" stroke-width="2"></polygon>
+      </svg>
+      <div class="exercise small">
+        <strong>Zadatak:</strong> Pokušaj da spojiš dve tačke izvan trougla – šta primećuješ?
+      </div>
+    </section>
+
+    <!-- 3. Unija, presek, razlika -->
     <section class="card">
       <h2>3. Unija, presek i razlika skupova tačaka</h2>
-      <p class="muted small">Klikni dugmad da vidiš uniju, presek i razliku dva skupa kružnica.</p>
+      <p class="muted small">
+        <strong>Unija:</strong> sve tačke koje pripadaju barem jednom od skupova.<br>
+        <strong>Presek:</strong> tačke koje pripadaju oba skupa.<br>
+        <strong>Razlika A\B:</strong> tačke koje pripadaju skupu A, a ne pripadaju skupu B.
+      </p>
       <svg id="vennPoints" width="250" height="150">
         <circle cx="90" cy="75" r="50" fill="#2563eb" fill-opacity="0.4" stroke="#1d4ed8" stroke-width="2"></circle>
         <circle cx="150" cy="75" r="50" fill="#facc15" fill-opacity="0.4" stroke="#d97706" stroke-width="2"></circle>
@@ -77,26 +87,40 @@
         <button class="btn" onclick="showSet('intersection')">Presek</button>
         <button class="btn" onclick="showSet('difference')">Razlika A\B</button>
       </div>
+      <div class="exercise small">
+        <strong>Zadatak:</strong> Označi tačke koje pripadaju A∩B, A∪B i A\B.
+      </div>
     </section>
 
+    <!-- 4. Kružna linija i krug -->
     <section class="card">
       <h2>4. Kružna linija i krug</h2>
+      <p class="muted small">
+        Kružna linija je skup tačaka koje su na istoj udaljenosti od centra, dok krug uključuje i sve tačke unutar linije.
+      </p>
       <svg width="200" height="150">
         <circle cx="100" cy="75" r="50" fill="none" stroke="#2563eb" stroke-width="2"></circle>
         <circle cx="100" cy="75" r="50" fill="#60a5fa" fill-opacity="0.2"></circle>
       </svg>
-      <p class="muted small">Plava linija je kružna linija, a svetloplava oblast je krug.</p>
     </section>
 
+    <!-- 5. Uzajamni položaj dva kruga -->
     <section class="card">
       <h2>5. Uzajamni položaj dva kruga/kružice</h2>
+      <p class="muted small">
+        Dva kruga mogu biti: odvojeni, tangentni, preklopljeni ili potpuno pokriveni.
+        Pomeraj kružnice ili menjaš poluprečnike da vidiš različite slučajeve.
+      </p>
       <svg width="250" height="150" id="twoCircles">
         <circle cx="80" cy="75" r="50" fill="#2563eb" fill-opacity="0.4" stroke="#1d4ed8" stroke-width="2"></circle>
         <circle cx="150" cy="75" r="40" fill="#facc15" fill-opacity="0.4" stroke="#d97706" stroke-width="2"></circle>
       </svg>
-      <p class="muted small">Pomeraj kružnice ili menjaš poluprečnike da vidiš različite položaje: odvojeni, tangentni ili preklopljeni.</p>
+      <div class="exercise small">
+        <strong>Zadatak:</strong> Promeni poluprečnike i položaj krugova i odredi njihov uzajamni položaj.
+      </div>
     </section>
 
+    <!-- Kontakt -->
     <section class="card" id="kontakt">
       <h2>Kontakt</h2>
       <p class="muted small">
@@ -137,5 +161,3 @@
   </script>
 </body>
 </html>
-
-
