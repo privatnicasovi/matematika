@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Matematika — Prirodni brojevi (5. razred)</title>
+  <meta name="description" content="Teorija, primeri i vežbe iz prirodnih brojeva za 5. razred osnovne škole.">
+  <link rel="stylesheet" href="5. razred/style5.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="brand">
+        <div class="logo">M</div>
+        <div>
+          <h1 style="margin:0">Matematika — 5. razred</h1>
+          <div class="muted">Teorija, zadaci i kvizovi za osnovce</div>
+        </div>
+      </div>
+      <nav>
+        <a href="../index.html">Početna</a>
+        <a href="5razred.html">5. razred</a>
+        <a href="deljivost.html">Deljivost</a>
+        <a href="5razred-prirodni-brojevi.html" class="active">Prirodni brojevi</a>
+        <a href="#kontakt">Kontakt</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card" id="teorija">
+      <h2>Prirodni brojevi — teorija</h2>
+      <p>Prirodni brojevi su svi brojevi koje koristimo za brojanje: 1, 2, 3, 4, ... itd. Nula (0) se takođe smatra prirodnim brojem u nekim pristupima.</p>
+      <ul>
+        <li>Prirodni brojevi počinju od 1 i nastavljaju se beskonačno.</li>
+        <li>Mogu se sabirati, oduzimati, množiti i deliti (osim deljenja nulom).</li>
+        <li>Deljivost prirodnih brojeva je osnova za dalje teme, kao što je deljivost sa 2, 3, 5, 10 itd.</li>
+      </ul>
+    </section>
+
+    <section class="card" id="zadaci">
+      <h2>Primeri zadataka</h2>
+      <ul>
+        <li>Odredi da li je broj 24 prirodan broj.</li>
+        <li>Koji su prirodni brojevi manji od 10?</li>
+        <li>Saberi 15 + 27.</li>
+        <li>Množi 7 × 6.</li>
+      </ul>
+    </section>
+
+    <section class="card" id="vezbe">
+      <h2>Vežbe — generiši zadatke</h2>
+      <div style="display:flex;gap:12px;align-items:center;margin-bottom:12px">
+        <label for="numTasks">Broj zadataka:</label>
+        <select id="numTasks">
+          <option>3</option>
+          <option selected>5</option>
+          <option>10</option>
+        </select>
+        <button class="btn" id="genTasks">Generiši zadatke</button>
+      </div>
+      <div id="tasks"></div>
+    </section>
+
+    <section class="card" id="kontakt" style="margin-top:20px">
+      <h2>Kontakt</h2>
+      <p class="small muted">
+        Za pitanja i sugestije: <strong>lakodomate@gmail.com</strong><br />
+        Telefon: 069 1 22 33 50
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container small">© 2025 Matematika — 5. razred. Napravljeno sa ♥.</div>
+  </footer>
+
+  <script>
+    // Generator vežbi za prirodne brojeve
+    function renderTasks() {
+      const container = document.getElementById('tasks');
+      container.innerHTML = '';
+      const numTasks = parseInt(document.getElementById('numTasks').value, 10) || 5;
+      for (let i = 0; i < numTasks; i++) {
+        const n = Math.floor(Math.random() * (1000000 - 100 + 1)) + 100; // 100 do 1.000.000
+        const el = document.createElement('div');
+        el.className = 'exercise';
+        el.textContent = `Broj ${n} — da li je deljiv sa 2, 3, 5, 9 ili 10?`;
+        container.appendChild(el);
+      }
+    }
+
+    document.getElementById('genTasks').addEventListener('click', renderTasks);
+    renderTasks();
+  </script>
+</body>
+</html>
