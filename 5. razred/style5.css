@@ -1,23 +1,32 @@
-/* Osnovni reset */
+/* ====== Osnovni stil ====== */
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
 }
 
-/* Container */
+html, body {
+  font-family: "Segoe UI", Roboto, sans-serif;
+  background-color: #f4f7f9;
+  color: #222;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* ====== Kontejner ====== */
 .container {
   width: 90%;
   max-width: 1000px;
   margin: 0 auto;
 }
 
-/* Header */
+/* ====== Header ====== */
 header {
-  background: #1e3a8a; /* plava */
+  background: linear-gradient(90deg, #0052a3, #0077cc);
   color: white;
-  padding: 12px 0;
+  padding: 16px 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  margin-bottom: 24px;
 }
 
 header .brand {
@@ -27,142 +36,172 @@ header .brand {
 }
 
 header .logo {
-  font-size: 32px;
+  background: white;
+  color: #0052a3;
   font-weight: bold;
-  color: #facc15; /* zlatna */
+  font-size: 28px;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
 
 header h1 {
-  font-size: 24px;
+  font-size: 22px;
+  font-weight: 600;
 }
 
 header .muted {
   font-size: 14px;
-  color: #e0e7ff; /* svetlija plava */
+  opacity: 0.9;
 }
 
-/* Navigacija */
+/* ====== Navigacija ====== */
 nav {
-  margin-top: 8px;
+  margin-top: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 nav a {
-  color: white;
   text-decoration: none;
-  margin-right: 16px;
-  font-weight: bold;
-  padding: 4px 8px;
-  border-radius: 4px;
-  transition: background 0.3s;
+  color: white;
+  background: rgba(255,255,255,0.15);
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: all 0.2s;
 }
 
-nav a:hover,
+nav a:hover {
+  background: rgba(255,255,255,0.3);
+}
+
 nav a.active {
-  background: #facc15;
-  color: #1e3a8a;
+  background: white;
+  color: #0052a3;
+  font-weight: bold;
 }
 
-/* Card elementi */
+/* ====== Kartice ====== */
 .card {
-  background: #f8fafc;
-  padding: 16px;
-  margin-bottom: 18px;
-  border-radius: 12px;
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
-.card h2, .card h3 {
+.card h2 {
+  color: #0052a3;
+  border-bottom: 2px solid #0077cc;
+  padding-bottom: 6px;
   margin-bottom: 12px;
-  color: #1e3a8a;
 }
 
-/* Liste */
-.plain {
+/* ====== Linkovi i liste ====== */
+a {
+  color: #0052a3;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+ul.plain {
   list-style: none;
   padding-left: 0;
 }
-
-.plain li {
-  margin-bottom: 8px;
+ul.plain li {
+  margin: 6px 0;
 }
 
-.plain li a {
-  color: #1e3a8a;
-  text-decoration: none;
-  transition: color 0.3s;
-}
-
-.plain li a:hover {
-  color: #facc15;
-}
-
-/* Footer */
-footer {
-  text-align: center;
-  padding: 12px 0;
-  background: #1e3a8a;
-  color: white;
-  margin-top: 24px;
-}
-
-footer .small {
-  font-size: 12px;
-}
-
-/* Tekst muted */
-.muted {
-  color: #6b7280;
-}
-
-/* Dugmići */
+/* ====== Dugmad ====== */
 .btn {
-  padding: 6px 12px;
-  background: #1e3a8a;
+  background-color: #0077cc;
   color: white;
   border: none;
+  padding: 8px 16px;
   border-radius: 6px;
   cursor: pointer;
   transition: background 0.3s;
 }
-
 .btn:hover {
-  background: #facc15;
-  color: #1e3a8a;
+  background-color: #005fa3;
 }
 
-/* Mala slova */
-.small {
-  font-size: 13px;
-}
-
-/* Kviz i zadaci */
+/* ====== Zadaci ====== */
 .exercise {
-  margin-bottom: 12px;
-  padding: 8px;
-  border-radius: 8px;
-  background: #eef2ff;
+  background: #e9f2fb;
+  border-left: 4px solid #0077cc;
+  padding: 10px 12px;
+  margin: 6px 0;
+  border-radius: 6px;
 }
 
-.exercise input {
-  margin-top: 4px;
-  padding: 4px 6px;
-  width: 60px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+/* ====== Tekst ====== */
+.small {
+  font-size: 14px;
+}
+.muted {
+  color: #555;
 }
 
-.result {
-  margin-top: 12px;
-  padding: 8px;
-  border-radius: 8px;
+/* ====== Footer ====== */
+footer {
+  background-color: #0052a3;
+  color: white;
+  text-align: center;
+  padding: 14px 0;
+  margin-top: 40px;
+  font-size: 14px;
+  border-top: 3px solid #0077cc;
 }
 
-.result.good {
-  background: #d1fae5;
-  color: #065f46;
-}
-
-.result.bad {
-  background: #fee2e2;
-  color: #991b1b;
+/* ====== Dark Mode ====== */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #121212;
+    color: #ddd;
+  }
+  header {
+    background: linear-gradient(90deg, #003366, #004c99);
+    box-shadow: 0 2px 8px rgba(255,255,255,0.1);
+  }
+  header .logo {
+    background: #003366;
+    color: white;
+  }
+  nav a {
+    background: rgba(255,255,255,0.1);
+  }
+  nav a:hover {
+    background: rgba(255,255,255,0.25);
+  }
+  nav a.active {
+    background: white;
+    color: #003366;
+  }
+  .card {
+    background: #1e1e1e;
+    box-shadow: 0 2px 6px rgba(255,255,255,0.05);
+  }
+  .card h2 {
+    color: #66aaff;
+    border-bottom-color: #3388ff;
+  }
+  a {
+    color: #66aaff;
+  }
+  .exercise {
+    background: #18263a;
+    border-left-color: #3388ff;
+  }
+  footer {
+    background: #003366;
+    border-top-color: #3388ff;
+  }
 }
