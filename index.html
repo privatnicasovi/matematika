@@ -65,7 +65,7 @@
                 <text x="95" y="64" class="txt">A ∩ B</text>
               </svg>
               <div>
-                <p class="small">Vennov dijagram prikazuje odnos između skupova A i B: preseci su u preseku, unija je sve što je u A ili B, razlika A\B su elementi samo u A.</p>
+                <p class="small">Venov dijagram prikazuje odnos između skupova A i B: preseci su u preseku, unija je sve što je u A ili B, razlika A\B su elementi samo u A.</p>
               </div>
             </div>
           </div>
@@ -150,7 +150,7 @@
           <strong>Zadatak ${i+1}.</strong> Data su dva skupa: A = {${s.A.join(', ')}}, B = {${s.B.join(', ')}}.<br>
           a) Izračunaj A ∪ B<br>
           b) Izračunaj A ∩ B<br>
-          c) Izračunaj A \\\\ B<br>
+          c) Izračunaj A \ B<br>
           <div style="margin-top:8px" class="small muted">Klikni da vidiš rešenja:</div>
           <button class="btn" onclick='showSolution(${JSON.stringify(s)})'>Prikaži rešenje</button>
           <div id="sol" style="margin-top:8px;display:none;padding:8px;border-radius:8px;background:#f8fafc"></div>
@@ -169,7 +169,7 @@
             const union = Array.from(new Set([...s.A, ...s.B])).sort((a,b)=>a-b);
             const inter = s.A.filter(x=> s.B.includes(x));
             const diff = s.A.filter(x=> !s.B.includes(x));
-            out.innerHTML = `<strong>Rešenje:</strong><br> A ∪ B = {${union.join(', ')}}<br> A ∩ B = {${inter.join(', ')}}<br> A \\\\ B = {${diff.join(', ')}}`;
+            out.innerHTML = `<strong>Rešenje:</strong><br> A ∪ B = {${union.join(', ')}}<br> A ∩ B = {${inter.join(', ')}}<br> A \ B = {${diff.join(', ')}}`;
           }
         }
       }
@@ -217,6 +217,7 @@
   </script>
 </body>
 </html>
+
 
 
 
