@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Matematika — Rotacija (5. razred)</title>
+  <meta name="description" content="Teorija, primeri i vežbe o rotaciji figura za 5. razred osnovne škole.">
+  <link rel="stylesheet" href="5. razred/style5.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="brand">
+        <div class="logo">M</div>
+        <div>
+          <h1 style="margin:0">Matematika — 5. razred</h1>
+          <div class="muted">Teorija, zadaci i vežbe za osnovce</div>
+        </div>
+      </div>
+      <nav>
+        <a href="../index.html">Početna</a>
+        <a href="5razred.html">5. razred</a>
+        <a href="deljivost.html">Deljivost</a>
+        <a href="5razred-prirodni-brojevi.html">Prirodni brojevi</a>
+        <a href="5razred-razlomci.html">Razlomci</a>
+        <a href="5razred-skupovi-tačaka.html">Skupovi tačaka</a>
+        <a href="5razred-ugao.html">Ugao</a>
+        <a href="5razred-osna-simetrija.html">Osna simetrija</a>
+        <a href="5razred-translacija.html">Translacija</a>
+        <a href="5razred-rotacija.html" class="active">Rotacija</a>
+        <a href="#kontakt">Kontakt</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card" id="teorija">
+      <h2>Rotacija — teorija</h2>
+      <p>Rotacija je okretanje figure oko tačke (centra rotacije) za određeni ugao, pri čemu figura zadržava oblik i veličinu.</p>
+      <ul>
+        <li>Ugao rotacije može biti 90°, 180°, 270° ili bilo koji drugi ugao.</li>
+        <li>Centar rotacije može biti unutar figure ili van nje.</li>
+        <li>Figura se zadržava proporcionalno, samo menja orijentaciju.</li>
+      </ul>
+    </section>
+
+    <section class="card" id="primeri">
+      <h2>Primeri zadataka</h2>
+      <ul>
+        <li>Okreni kvadrat sa koordinatama A(1,1), B(3,1), C(3,3), D(1,3) za 90° oko centra kvadrata.</li>
+        <li>Rotiraj jednakostranični trougao oko tačke O za 180°.</li>
+        <li>Odredi nove koordinate pravougaonika nakon rotacije od 270° oko koordinatnog početka.</li>
+      </ul>
+    </section>
+
+    <section class="card" id="vezbe">
+      <h2>Vežbe — generiši zadatke</h2>
+      <div style="display:flex;gap:12px;align-items:center;margin-bottom:12px">
+        <label for="numTasks">Broj zadataka:</label>
+        <select id="numTasks">
+          <option>3</option>
+          <option selected>5</option>
+          <option>10</option>
+        </select>
+        <button class="btn" id="genTasks">Generiši zadatke</button>
+      </div>
+      <div id="tasks"></div>
+    </section>
+
+    <section class="card" id="kontakt" style="margin-top:20px">
+      <h2>Kontakt</h2>
+      <p class="small muted">
+        Za pitanja i sugestije: <strong>lakodomate@gmail.com</strong><br />
+        Telefon: 069 1 22 33 50
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container small">© 2025 Matematika — 5. razred. Napravljeno sa ♥.</div>
+  </footer>
+
+  <script>
+    // Generator zadataka za rotaciju
+    function renderTasks() {
+      const container = document.getElementById('tasks');
+      container.innerHTML = '';
+      const numTasks = parseInt(document.getElementById('numTasks').value, 10) || 5;
+      const figures = [
+        "kvadrat", "pravougaonik", "jednakostranični trougao", "pravougli trougao", "romb"
+      ];
+      const angles = [90, 180, 270];
+      for (let i = 0; i < numTasks; i++) {
+        const fig = figures[Math.floor(Math.random() * figures.length)];
+        const angle = angles[Math.floor(Math.random() * angles.length)];
+        const el = document.createElement('div');
+        el.className = 'exercise';
+        el.innerHTML = `<strong>Zadatak ${i+1}:</strong> Rotiraj figuru ${fig} za ${angle}° oko centra. Odredi nove koordinate.`;
+        container.appendChild(el);
+      }
+    }
+
+    document.getElementById('genTasks').addEventListener('click', renderTasks);
+    renderTasks();
+  </script>
+</body>
+</html>
