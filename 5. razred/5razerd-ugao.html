@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Matematika — Ugao (5. razred)</title>
+  <meta name="description" content="Teorija, primeri i vežbe o uglovima za 5. razred osnovne škole.">
+  <link rel="stylesheet" href="5. razred/style5.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="brand">
+        <div class="logo">M</div>
+        <div>
+          <h1 style="margin:0">Matematika — 5. razred</h1>
+          <div class="muted">Teorija, zadaci i vežbe za osnovce</div>
+        </div>
+      </div>
+      <nav>
+        <a href="../index.html">Početna</a>
+        <a href="5razred.html">5. razred</a>
+        <a href="deljivost.html">Deljivost</a>
+        <a href="5razred-prirodni-brojevi.html">Prirodni brojevi</a>
+        <a href="5razred-razlomci.html">Razlomci</a>
+        <a href="5razred-skupovi-tačaka.html">Skupovi tačaka</a>
+        <a href="5razred-ugao.html" class="active">Ugao</a>
+        <a href="#kontakt">Kontakt</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card" id="teorija">
+      <h2>Ugao — teorija</h2>
+      <p>Ugao je figura koju čine dve poluprave sa zajedničkom početnom tačkom (vrhom ugla).</p>
+      <ul>
+        <li>Vrsta ugla prema veličini:
+          <ul>
+            <li>Oštar: manji od 90°</li>
+            <li>Pravi: 90°</li>
+            <li>Ispružen: 180°</li>
+            <li>Ublag: veći od 90° ali manji od 180°</li>
+          </ul>
+        </li>
+        <li>Simboli: ∠A, ∠ABC itd.</li>
+        <li>Merenje uglova pomoću geometrijskog eksera ili transportera.</li>
+      </ul>
+    </section>
+
+    <section class="card" id="primeri">
+      <h2>Primeri zadataka</h2>
+      <ul>
+        <li>Odredi vrstu ugla ako je njegova veličina 75°.</li>
+        <li>Koliki je ugao ako je upola manji od pravog ugla?</li>
+        <li>Pronađi veličinu ugla ∠ABC ako ∠ABC + ∠DEF = 180° i ∠DEF = 110°.</li>
+      </ul>
+    </section>
+
+    <section class="card" id="vezbe">
+      <h2>Vežbe — generiši zadatke</h2>
+      <div style="display:flex;gap:12px;align-items:center;margin-bottom:12px">
+        <label for="numTasks">Broj zadataka:</label>
+        <select id="numTasks">
+          <option>3</option>
+          <option selected>5</option>
+          <option>10</option>
+        </select>
+        <button class="btn" id="genTasks">Generiši zadatke</button>
+      </div>
+      <div id="tasks"></div>
+    </section>
+
+    <section class="card" id="kontakt" style="margin-top:20px">
+      <h2>Kontakt</h2>
+      <p class="small muted">
+        Za pitanja i sugestije: <strong>lakodomate@gmail.com</strong><br />
+        Telefon: 069 1 22 33 50
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container small">© 2025 Matematika — 5. razred. Napravljeno sa ♥.</div>
+  </footer>
+
+  <script>
+    // Generator zadataka o uglovima
+    function renderTasks() {
+      const container = document.getElementById('tasks');
+      container.innerHTML = '';
+      const numTasks = parseInt(document.getElementById('numTasks').value, 10) || 5;
+      for (let i = 0; i < numTasks; i++) {
+        const angle = Math.floor(Math.random() * 179) + 1; // 1-179°
+        const el = document.createElement('div');
+        el.className = 'exercise';
+        el.innerHTML = `<strong>Zadatak ${i+1}:</strong> Odredi vrstu ugla od ${angle}°: oštar, pravi ili ublag?`;
+        container.appendChild(el);
+      }
+    }
+
+    document.getElementById('genTasks').addEventListener('click', renderTasks);
+    renderTasks();
+  </script>
+</body>
+</html>
