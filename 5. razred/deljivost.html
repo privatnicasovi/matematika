@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Deljivost brojeva — Matematika 5. razred</title>
+  <meta name="description" content="Teorija, zadaci i kviz iz deljivosti brojeva za 5. razred osnovne škole.">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="brand">
+        <div class="logo">M</div>
+        <div>
+          <h1 style="margin:0">Deljivost brojeva</h1>
+          <div class="muted">Teorija, zadaci i kviz — 5. razred</div>
+        </div>
+      </div>
+      <nav>
+        <a href="index.html">Početna</a>
+        <a href="5razred.html">5. razred</a>
+        <a href="#kviz">Kviz</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>Teorija — Deljivost brojeva</h2>
+      <p class="small">
+        Broj <strong>a</strong> je deljiv brojem <strong>b</strong> ako postoji ceo broj <strong>k</strong> takav da važi:  
+        <strong>a = b × k</strong>.  
+      </p>
+      <ul>
+        <li>Broj je deljiv sa 2 ako se završava parnim ciframa (0, 2, 4, 6, 8).</li>
+        <li>Deljiv sa 3 ako je zbir njegovih cifara deljiv sa 3.</li>
+        <li>Deljiv sa 4 ako broj koji čine poslednje dve cifre deli 4.</li>
+        <li>Deljiv sa 5 ako se završava sa 0 ili 5.</li>
+        <li>Deljiv sa 9 ako je zbir cifara deljiv sa 9.</li>
+        <li>Deljiv sa 10 ako se završava na 0.</li>
+      </ul>
+    </section>
+
+    <section class="card" id="vezbe" style="margin-top:20px">
+      <h2>Zadaci za vežbu</h2>
+      <p class="small">Odredi da li su sledeći brojevi deljivi sa 2, 3, 5, 9 i 10:</p>
+      <div id="tasks"></div>
+      <button class="btn" id="genTasks">Generiši zadatke</button>
+    </section>
+
+    <section class="card" id="kviz" style="margin-top:20px">
+      <h2>Kviz — Deljivost</h2>
+      <p class="small">Odgovori tačno na svako pitanje.</p>
+      <div id="quizArea"></div>
+      <button class="btn" id="startQuiz">Pokreni kviz</button>
+      <button class="btn" id="checkQuiz" style="background:#10b981">Proveri</button>
+      <div id="quizResult" class="result small" style="display:none"></div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container small">© 2025 Matematika — Deljivost brojeva. Napravljeno sa ♥.</div>
+  </footer>
+
+  <script>
+    // generisanje zadataka
+    function renderTasks() {
+      const container = document.getElementById('tasks');
+      container.innerHTML = '';
+      for (let i = 0; i < 5; i++) {
+        const n = Math.floor(Math.random() * 900 + 100);
+        const el = document.createElement('div');
+        el.className = 'exercise';
+        el.textContent = `Broj ${n} — da li je deljiv sa 2, 3, 5, 9 ili 10?`;
+        container.appendChild(el);
+      }
+    }
+    document.getElementById('genTasks').addEventListener('click', renderTasks);
+    renderTasks();
+
+    // kviz
+    const questions = [
+      { q: 'Broj 20 je deljiv sa 5.', a: true },
+      { q: 'Broj 27 je deljiv sa 9.', a: true },
+      { q: 'Broj 32 je deljiv sa 3.', a: false },
+      { q: 'Broj 45 je deljiv sa 10.', a: false },
+      { q: 'Broj 18 je deljiv sa 2 i sa 3.', a: true }
+    ];
+    document.getElementById('startQuiz').addEventListener('click', () => {
+      const area = document.getElementById('quizArea');
+      area.innerHTML = '';
+      questions.forEach((q, i) => {
+        const div = document.createElement('div');
+        div.innerHTML = `
+          <p><strong>${i+1}.</strong> ${q.q}</p>
+          <label><input type="radio" name="q${i}" value="true"> Tačno</label>
+          <label><input type="radio" name="q${i}" value="false"> Netačno</label>
+        `;
+        area.appendChild(div);
+      });
+      document.getElementById('quizResult').style.display = 'none';
+    });
+
+    document.getElementById('checkQuiz').addEventListener('click', () => {
+      let correct = 0;
+      questions.forEach((q, i) => {
+        const checked = document.querySelector(`input[name=q${i}]:checked`);
+        if (checked && checked.value === q.a.toString()) correct++;
+      });
+      const res = document.getElementById('quizResult');
+      res.style.display = 'block';
+      res.innerHTML = `Tačnih odgovora: <strong>${correct}/${questions.length}</strong>`;
+    });
+  </script>
+</body>
+</html>
