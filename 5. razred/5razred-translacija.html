@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Matematika — Translacija (5. razred)</title>
+  <meta name="description" content="Teorija, primeri i vežbe o translaciji (pomera figura) za 5. razred osnovne škole.">
+  <link rel="stylesheet" href="5. razred/style5.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="brand">
+        <div class="logo">M</div>
+        <div>
+          <h1 style="margin:0">Matematika — 5. razred</h1>
+          <div class="muted">Teorija, zadaci i vežbe za osnovce</div>
+        </div>
+      </div>
+      <nav>
+        <a href="../index.html">Početna</a>
+        <a href="5razred.html">5. razred</a>
+        <a href="deljivost.html">Deljivost</a>
+        <a href="5razred-prirodni-brojevi.html">Prirodni brojevi</a>
+        <a href="5razred-razlomci.html">Razlomci</a>
+        <a href="5razred-skupovi-tačaka.html">Skupovi tačaka</a>
+        <a href="5razred-ugao.html">Ugao</a>
+        <a href="5razred-osna-simetrija.html">Osna simetrija</a>
+        <a href="5razred-translacija.html" class="active">Translacija</a>
+        <a href="#kontakt">Kontakt</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card" id="teorija">
+      <h2>Translacija — teorija</h2>
+      <p>Translacija je pomeranje figure u prostoru bez promene oblika i veličine. Svaka tačka figure se pomera za isti vektor.</p>
+      <ul>
+        <li>Figura zadržava oblik i veličinu.</li>
+        <li>Pomera se u horizontalnom, vertikalnom ili kombinovanom pravcu.</li>
+        <li>Vektor translacije određuje pravac i dužinu pomeranja.</li>
+      </ul>
+    </section>
+
+    <section class="card" id="primeri">
+      <h2>Primeri zadataka</h2>
+      <ul>
+        <li>Pomeri trougao A(0,0), B(2,0), C(1,3) za vektor v = (3,2). Nacrtaj novu poziciju.</li>
+        <li>Kvadrat sa koordinatama A(1,1), B(3,1), C(3,3), D(1,3) transliraj za vektor (0,5).</li>
+        <li>Odredi nove koordinate pravougaonika nakon translacije vektorom (-2,1).</li>
+      </ul>
+    </section>
+
+    <section class="card" id="vezbe">
+      <h2>Vežbe — generiši zadatke</h2>
+      <div style="display:flex;gap:12px;align-items:center;margin-bottom:12px">
+        <label for="numTasks">Broj zadataka:</label>
+        <select id="numTasks">
+          <option>3</option>
+          <option selected>5</option>
+          <option>10</option>
+        </select>
+        <button class="btn" id="genTasks">Generiši zadatke</button>
+      </div>
+      <div id="tasks"></div>
+    </section>
+
+    <section class="card" id="kontakt" style="margin-top:20px">
+      <h2>Kontakt</h2>
+      <p class="small muted">
+        Za pitanja i sugestije: <strong>lakodomate@gmail.com</strong><br />
+        Telefon: 069 1 22 33 50
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container small">© 2025 Matematika — 5. razred. Napravljeno sa ♥.</div>
+  </footer>
+
+  <script>
+    // Generator zadataka za translaciju
+    function renderTasks() {
+      const container = document.getElementById('tasks');
+      container.innerHTML = '';
+      const numTasks = parseInt(document.getElementById('numTasks').value, 10) || 5;
+      const figures = [
+        "kvadrat", "pravougaonik", "jednakostranični trougao", "pravougli trougao", "romb"
+      ];
+      for (let i = 0; i < numTasks; i++) {
+        const fig = figures[Math.floor(Math.random() * figures.length)];
+        const dx = Math.floor(Math.random() * 10 - 5); // -5 do 4
+        const dy = Math.floor(Math.random() * 10 - 5); // -5 do 4
+        const el = document.createElement('div');
+        el.className = 'exercise';
+        el.innerHTML = `<strong>Zadatak ${i+1}:</strong> Transliraj figuru ${fig} za vektor (${dx}, ${dy}). Odredi nove koordinate.`;
+        container.appendChild(el);
+      }
+    }
+
+    document.getElementById('genTasks').addEventListener('click', renderTasks);
+    renderTasks();
+  </script>
+</body>
+</html>
