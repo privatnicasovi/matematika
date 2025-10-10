@@ -13,7 +13,7 @@ body {
 
 header {
   background: #111;
-  color: #ffd700;
+  color: #004cff;
   padding: 20px 0;
   box-shadow: 0 2px 8px rgba(0,0,0,0.3);
 }
@@ -112,3 +112,4 @@ footer {
   color: #ffd700;
   margin-top: 30px;
 }
+
