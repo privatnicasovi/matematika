@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://privatnicasovi.github.io/matematika/sitemap.xml
