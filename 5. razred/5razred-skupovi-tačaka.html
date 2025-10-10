@@ -3,10 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Matematika — Skupovi tačaka (5. razred)</title>
-  <meta name="description" content="Teorija, primeri i vežbe o skupovima tačaka za 5. razred osnovne škole.">
-  
-  <link rel="stylesheet" href="style5.css">
+  <title>Skupovi tačaka — 5. razred</title>
+  <link rel="stylesheet" href="5. razred/style5.css">
 </head>
 <body>
   <header>
@@ -14,67 +12,83 @@
       <div class="brand">
         <div class="logo">M</div>
         <div>
-          <h1 style="margin:0">Matematika — 5. razred</h1>
-          <div class="muted">Teorija, zadaci i vežbe za osnovce</div>
+          <h1 style="margin:0">Matematika — Skupovi tačaka</h1>
+          <div class="muted">Geometrija za 5. razred</div>
         </div>
       </div>
       <nav>
-        <a href="../index.html">Početna</a>
+        <a href="index.html">Početna</a>
         <a href="5razred.html">5. razred</a>
-        
-        <a href="deljivost.html">Deljivost</a>
-        <a href="5razred-skupovi.html">Skupovi i operacije</a>
-        <a href="5razred-prirodni-brojevi.html">Prirodni brojevi</a>
-        <a href="5razred-razlomci.html">Razlomci</a>
-        <a href="5razred-skupovi-tačaka.html">Skupovi tačaka</a>
-        <a href="5razerd-ugao.html">Ugao</a>
-        <a href="5razred-osna-simetrija.html">Osna simetrija</a>
-        <a href="5razred-translacija.html">Translacija</a>
-        <a href="5razred-rotacija.html" class="active">Rotacija</a>
-       
         <a href="#kontakt">Kontakt</a>
       </nav>
     </div>
   </header>
 
+  <div class="theme-selector container">
+    <button onclick="setTheme('')">🌞 Svetla</button>
+    <button onclick="setTheme('dark')">🌙 Tamna</button>
+    <button onclick="setTheme('gold')">⭐ Zlatna</button>
+  </div>
+
   <main class="container">
-    <section class="card" id="teorija">
-      <h2>Skupovi tačaka — teorija</h2>
-      <p>Skup tačaka je zbirka različitih tačaka u ravni ili prostoru. U 5. razredu učimo:</p>
-      <ul>
-        <li>Skup se može zapisati nabrajanjem tačaka: <strong>A = {P, Q, R}</strong>.</li>
-        <li>Presek skupova: <strong>A ∩ B</strong> su tačke koje pripadaju i A i B.</li>
-        <li>Unija skupova: <strong>A ∪ B</strong> su sve tačke koje pripadaju A ili B.</li>
-        <li>Razlika skupova: <strong>A \ B</strong> su tačke koje pripadaju samo skupu A.</li>
-      </ul>
+    <section class="card">
+      <h2>1. Geometrijske figure kao skupovi tačaka</h2>
+      <p class="muted small">Nacrtaj trougao i kvadrat koristeći SVG da vidiš tačke koje ih čine.</p>
+      <svg width="200" height="200">
+        <!-- Trougao -->
+        <polygon points="50,150 150,150 100,50" fill="#60a5fa" fill-opacity="0.4" stroke="#2563eb" stroke-width="2"></polygon>
+        <!-- Kvadrat -->
+        <rect x="50" y="50" width="50" height="50" fill="#facc15" fill-opacity="0.4" stroke="#d97706" stroke-width="2"></rect>
+      </svg>
     </section>
 
-    <section class="card" id="primeri">
-      <h2>Primeri zadataka</h2>
-      <ul>
-        <li>Skup A = {P, Q, R}, skup B = {Q, R, S}. Napiši A ∩ B, A ∪ B i A \ B.</li>
-        <li>Skup C = {X, Y, Z}, skup D = {Y, Z, W}. Koje tačke su u preseku i uniji?</li>
-      </ul>
-    </section>
-
-    <section class="card" id="vezbe">
-      <h2>Vežbe — generiši zadatke</h2>
-      <div style="display:flex;gap:12px;align-items:center;margin-bottom:12px">
-        <label for="numTasks">Broj zadataka:</label>
-        <select id="numTasks">
-          <option>3</option>
-          <option selected>5</option>
-          <option>10</option>
-        </select>
-        <button class="btn" id="genTasks">Generiši zadatke</button>
+    <section class="card">
+      <h2>2. Konveksni skupovi tačaka</h2>
+      <p class="muted small">Skup je konveksan ako linija između bilo koje dve tačke ostaje unutar skupa.</p>
+      <svg width="200" height="150">
+        <polygon points="20,130 100,20 180,130" fill="#34d399" fill-opacity="0.4" stroke="#059669" stroke-width="2"></polygon>
+      </svg>
+      <div class="exercise small">
+        <strong>Zadatak:</strong> Probaj da spojiš bilo koje dve tačke unutar trougla i proveri da li linija ostaje unutar.
       </div>
-      <div id="tasks"></div>
     </section>
 
-    <section class="card" id="kontakt" style="margin-top:20px">
+    <section class="card">
+      <h2>3. Unija, presek i razlika skupova tačaka</h2>
+      <p class="muted small">Klikni dugmad da vidiš uniju, presek i razliku dva skupa kružnica.</p>
+      <svg id="vennPoints" width="250" height="150">
+        <circle cx="90" cy="75" r="50" fill="#2563eb" fill-opacity="0.4" stroke="#1d4ed8" stroke-width="2"></circle>
+        <circle cx="150" cy="75" r="50" fill="#facc15" fill-opacity="0.4" stroke="#d97706" stroke-width="2"></circle>
+      </svg>
+      <div style="margin-top:8px">
+        <button class="btn" onclick="showSet('union')">Unija</button>
+        <button class="btn" onclick="showSet('intersection')">Presek</button>
+        <button class="btn" onclick="showSet('difference')">Razlika A\B</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>4. Kružna linija i krug</h2>
+      <svg width="200" height="150">
+        <circle cx="100" cy="75" r="50" fill="none" stroke="#2563eb" stroke-width="2"></circle>
+        <circle cx="100" cy="75" r="50" fill="#60a5fa" fill-opacity="0.2"></circle>
+      </svg>
+      <p class="muted small">Plava linija je kružna linija, a svetloplava oblast je krug.</p>
+    </section>
+
+    <section class="card">
+      <h2>5. Uzajamni položaj dva kruga/kružice</h2>
+      <svg width="250" height="150" id="twoCircles">
+        <circle cx="80" cy="75" r="50" fill="#2563eb" fill-opacity="0.4" stroke="#1d4ed8" stroke-width="2"></circle>
+        <circle cx="150" cy="75" r="40" fill="#facc15" fill-opacity="0.4" stroke="#d97706" stroke-width="2"></circle>
+      </svg>
+      <p class="muted small">Pomeraj kružnice ili menjaš poluprečnike da vidiš različite položaje: odvojeni, tangentni ili preklopljeni.</p>
+    </section>
+
+    <section class="card" id="kontakt">
       <h2>Kontakt</h2>
-      <p class="small muted">
-        Za pitanja i sugestije: <strong>lakodomate@gmail.com</strong><br />
+      <p class="muted small">
+        Za pitanja i predloge piši na <strong>lakodomate@gmail.com</strong><br>
         Telefon: 069 1 22 33 50
       </p>
     </section>
@@ -85,35 +99,29 @@
   </footer>
 
   <script>
-    // Generator zadataka za skupove tačaka
-    function renderTasks() {
-      const container = document.getElementById('tasks');
-      container.innerHTML = '';
-      const numTasks = parseInt(document.getElementById('numTasks').value, 10) || 5;
-      const points = ['A','B','C','D','E','F','G','H','I','J','K','L'];
-      for (let i = 0; i < numTasks; i++) {
-        // nasumično odaberi veličinu skupova
-        const sizeA = Math.floor(Math.random()*4 + 2); // 2-5 tačaka
-        const sizeB = Math.floor(Math.random()*4 + 2);
-        const shuffle = arr => arr.sort(()=>0.5-Math.random());
-        const A = shuffle(points).slice(0,sizeA);
-        const B = shuffle(points).slice(0,sizeB);
-        const el = document.createElement('div');
-        el.className = 'exercise';
-        el.innerHTML = `
-          <strong>Zadatak ${i+1}:</strong> Skup A = {${A.join(', ')}}, skup B = {${B.join(', ')}}.<br>
-          a) Presek: A ∩ B<br>
-          b) Unija: A ∪ B<br>
-          c) Razlika: A \ B
-        `;
-        container.appendChild(el);
-      }
+    // Tema
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme) document.body.classList.add(savedTheme);
+    function setTheme(theme) {
+      document.body.className = theme;
+      localStorage.setItem("theme", theme);
     }
 
-    document.getElementById('genTasks').addEventListener('click', renderTasks);
-    renderTasks();
+    // Unija, presek, razlika
+    function showSet(type) {
+      const svg = document.getElementById('vennPoints');
+      const circles = svg.querySelectorAll('circle');
+      if(type==='union'){
+        circles[0].setAttribute('fill-opacity','0.4');
+        circles[1].setAttribute('fill-opacity','0.4');
+      } else if(type==='intersection'){
+        circles[0].setAttribute('fill-opacity','0.2');
+        circles[1].setAttribute('fill-opacity','0.2');
+      } else if(type==='difference'){
+        circles[0].setAttribute('fill-opacity','0.4');
+        circles[1].setAttribute('fill-opacity','0');
+      }
+    }
   </script>
 </body>
 </html>
-
-
