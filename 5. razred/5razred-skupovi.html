@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Matematika — 5. razred: Skupovi i operacije</title>
+  <meta name="description" content="Vežbe i zadaci iz matematike za 5. razred: Skupovi i operacije.">
+
+  <link rel="stylesheet" href="style5.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="brand">
+        <div class="logo">M</div>
+        <div>
+          <h1 style="margin:0">Matematika — 5. razred</h1>
+          <div class="muted">Skupovi i operacije — teorija, zadaci i kviz</div>
+        </div>
+      </div>
+      <nav>
+        <a href="../index.html">Početna</a>
+        <a href="5razred.html">5. razred</a>
+        <a href="#kontakt">Kontakt</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card" id="teorija">
+      <h2>Teorija — Skupovi i operacije</h2>
+      <p>Skup je kolekcija različitih elemenata. Neki osnovni pojmovi i operacije:</p>
+      <ul>
+        <li><strong>Unija (A ∪ B):</strong> svi elementi koji su u A ili B</li>
+        <li><strong>Presek (A ∩ B):</strong> elementi koji su u A i B</li>
+        <li><strong>Razlika (A \ B):</strong> elementi koji su u A, ali nisu u B</li>
+      </ul>
+    </section>
+
+    <section class="card" id="vezbe">
+      <h2>Vežbe</h2>
+      <p>Generiši zadatke za vežbanje operacija sa skupovima:</p>
+
+      <div style="display:flex;gap:12px;align-items:center;margin-bottom:12px">
+        <label for="numTasks">Broj zadataka:</label>
+        <select id="numTasks">
+          <option>3</option>
+          <option selected>5</option>
+          <option>10</option>
+        </select>
+        <button class="btn" id="genTasks">Generiši zadatke</button>
+      </div>
+
+      <div id="tasks"></div>
+    </section>
+
+    <section class="card" id="kviz">
+      <h2>Kviz</h2>
+      <p>Mini kviz — izračunaj proste zadatke:</p>
+      <div style="display:flex;gap:12px;align-items:center;margin-bottom:12px">
+        <button class="btn" id="startQuiz">Generiši kviz</button>
+        <button class="btn" id="checkQuiz" style="background:#10b981">Proveri odgovore</button>
+      </div>
+      <div id="quizArea"></div>
+      <div id="quizResult" class="result small" style="display:none"></div>
+    </section>
+
+    <section class="card" id="kontakt" style="margin-top:20px">
+      <h2>Kontakt</h2>
+      <p class="small muted">
+        Za pitanja: <strong>lakodomate@gmail.com</strong><br>
+        Telefon: 069 1 22 33 50
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container small">© 2025 Matematika — 5. razred. Napravljeno sa ♥.</div>
+  </footer>
+
+<script>
+  // generator zadataka - skupovi
+  function generateSetExercise() {
+    const universe = [1,2,3,4,5,6,7,8,9,10];
+    function randSubset() {
+      return universe.filter(() => Math.random() < 0.4);
+    }
+    const A = Array.from(new Set(randSubset())).sort((a,b)=>a-b);
+    const B = Array.from(new Set(randSubset())).sort((a,b)=>a-b);
+    return {A,B};
+  }
+
+  function renderSets() {
+    const num = parseInt(document.getElementById('numTasks').value,10) || 5;
+    const container = document.getElementById('tasks');
+    container.innerHTML = '';
+    for(let i=0;i<num;i++){
+      const s = generateSetExercise();
+      const div = document.createElement('div');
+      div.className='exercise';
+      div.innerHTML = `
+        <strong>Zadatak ${i+1}.</strong> Data su dva skupa: A = {${s.A.join(', ')}}, B = {${s.B.join(', ')}}.<br>
+        a) Izračunaj A ∪ B<br>
+        b) Izračunaj A ∩ B<br>
+        c) Izračunaj A \ B<br>
+        <div style="margin-top:8px" class="small muted">Klikni da vidiš rešenja:</div>
+        <button class="btn" onclick='showSolution(${JSON.stringify(s)})'>Prikaži rešenje</button>
+        <div id="sol" style="margin-top:8px;display:none;padding:8px;border-radius:8px;background:#f8fafc"></div>
+      `;
+      container.appendChild(div);
+    }
+  }
+
+  window.showSolution = function(s) {
+    const solDivs = Array.from(document.querySelectorAll('.exercise'));
+    for(const d of solDivs){
+      if(d.innerText.includes('A = {'+s.A.join(', ')+'}') && d.innerText.includes('B = {'+s.B.join(', ')+'}')){
+        const out = d.querySelector('#sol');
+        if(out){
+          out.style.display='block';
+          const union = Array.from(new Set([...s.A, ...s.B])).sort((a,b)=>a-b);
+          const inter = s.A.filter(x=> s.B.includes(x));
+          const diff = s.A.filter(x=> !s.B.includes(x));
+          out.innerHTML = `<strong>Rešenje:</strong><br> A ∪ B = {${union.join(', ')}}<br> A ∩ B = {${inter.join(', ')}}<br> A \ B = {${diff.join(', ')}}`;
+        }
+      }
+    }
+  }
+
+  document.getElementById('genTasks').addEventListener('click', renderSets);
+  renderSets();
+
+  // kviz
+  function makeQuiz(){
+    const q = [];
+    for(let i=0;i<5;i++){
+      const a = Math.floor(Math.random()*12)+1;
+      const b = Math.floor(Math.random()*12)+1;
+      q.push({id:i, text:`Koliko je ${a} + ${b}?`, answer:a+b});
+    }
+    return q;
+  }
+  let currentQuiz = [];
+  document.getElementById('startQuiz').addEventListener('click', ()=>{
+    currentQuiz = makeQuiz();
+    const area = document.getElementById('quizArea');
+    area.innerHTML = '';
+    currentQuiz.forEach(q=>{
+      const d=document.createElement('div');d.className='exercise';
+      d.innerHTML=`<div><strong>Pitanje ${q.id+1}:</strong> ${q.text}</div><input type='number' data-id='${q.id}' />`;
+      area.appendChild(d);
+    });
+    document.getElementById('quizResult').style.display='none';
+  });
+
+  document.getElementById('checkQuiz').addEventListener('click', ()=>{
+    if(currentQuiz.length===0) return alert('Najpre generiši kviz.');
+    let correct=0;
+    currentQuiz.forEach(q=>{
+      const inp=document.querySelector(`input[data-id='${q.id}']`);
+      const val=inp?parseInt(inp.value,10):NaN;
+      if(val===q.answer) correct++;
+    });
+    const result=document.getElementById('quizResult');
+    result.style.display='block';
+    result.className='result small '+(correct===currentQuiz.length?'good':'bad');
+    result.innerHTML=`Tačnih odgovora: <strong>${correct}/${currentQuiz.length}</strong>`;
+  });
+</script>
+</body>
+</html>
