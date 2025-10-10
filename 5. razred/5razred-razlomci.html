@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Matematika — Razlomci (5. razred)</title>
+  <meta name="description" content="Teorija, primeri i vežbe iz razlomaka za 5. razred osnovne škole.">
+  <link rel="stylesheet" href="5. razred/style5.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="brand">
+        <div class="logo">M</div>
+        <div>
+          <h1 style="margin:0">Matematika — 5. razred</h1>
+          <div class="muted">Teorija, zadaci i kvizovi za osnovce</div>
+        </div>
+      </div>
+      <nav>
+        <a href="../index.html">Početna</a>
+        <a href="5razred.html">5. razred</a>
+        <a href="deljivost.html">Deljivost</a>
+        <a href="5razred-prirodni-brojevi.html">Prirodni brojevi</a>
+        <a href="5razred-razlomci.html" class="active">Razlomci</a>
+        <a href="#kontakt">Kontakt</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card" id="teorija">
+      <h2>Razlomci — teorija</h2>
+      <p>Razlomak je način prikazivanja dela celog broja. Zapisuje se u obliku <strong>brojilac / imenilac</strong>:</p>
+      <ul>
+        <li>Brojilac je gornji broj i pokazuje koliko delova posmatramo.</li>
+        <li>Imenilac je donji broj i pokazuje na koliko delova je ceo broj podeljen.</li>
+        <li>Primer: 3/4 znači 3 dela od ukupno 4 dela celog broja.</li>
+        <li>Razlomci se mogu sabirati, oduzimati, množiti i deliti, uz pravila koja se uče u 5. razredu.</li>
+      </ul>
+    </section>
+
+    <section class="card" id="primeri">
+      <h2>Primeri zadataka</h2>
+      <ul>
+        <li>Koji je veći razlomak: 3/4 ili 2/3?</li>
+        <li>Saberi razlomke: 1/2 + 1/3.</li>
+        <li>Oduzmi razlomke: 5/6 - 1/4.</li>
+        <li>Množi razlomke: 2/3 × 3/5.</li>
+      </ul>
+    </section>
+
+    <section class="card" id="vezbe">
+      <h2>Vežbe — generiši zadatke</h2>
+      <div style="display:flex;gap:12px;align-items:center;margin-bottom:12px">
+        <label for="numTasks">Broj zadataka:</label>
+        <select id="numTasks">
+          <option>3</option>
+          <option selected>5</option>
+          <option>10</option>
+        </select>
+        <button class="btn" id="genTasks">Generiši zadatke</button>
+      </div>
+      <div id="tasks"></div>
+    </section>
+
+    <section class="card" id="kontakt" style="margin-top:20px">
+      <h2>Kontakt</h2>
+      <p class="small muted">
+        Za pitanja i sugestije: <strong>lakodomate@gmail.com</strong><br />
+        Telefon: 069 1 22 33 50
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container small">© 2025 Matematika — 5. razred. Napravljeno sa ♥.</div>
+  </footer>
+
+  <script>
+    // Generator vežbi za razlomke (5. razred)
+    function renderTasks() {
+      const container = document.getElementById('tasks');
+      container.innerHTML = '';
+      const numTasks = parseInt(document.getElementById('numTasks').value, 10) || 5;
+      for (let i = 0; i < numTasks; i++) {
+        const numerator = Math.floor(Math.random() * 10 + 1);  // 1-10
+        const denominator = Math.floor(Math.random() * 9 + 2); // 2-10
+        const el = document.createElement('div');
+        el.className = 'exercise';
+        el.textContent = `Zadatak ${i+1}: Koja je vrednost razlomka ${numerator}/${denominator}?`;
+        container.appendChild(el);
+      }
+    }
+
+    document.getElementById('genTasks').addEventListener('click', renderTasks);
+    renderTasks();
+  </script>
+</body>
+</html>
