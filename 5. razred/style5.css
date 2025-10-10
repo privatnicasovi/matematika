@@ -1,207 +1,195 @@
-/* ====== Osnovni stil ====== */
+/* === Osnovni reset === */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-html, body {
+body {
   font-family: "Segoe UI", Roboto, sans-serif;
-  background-color: #f4f7f9;
-  color: #222;
   line-height: 1.6;
-  min-height: 100vh;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
-/* ====== Kontejner ====== */
-.container {
-  width: 90%;
-  max-width: 1000px;
-  margin: 0 auto;
+/* === Teme === */
+:root {
+  --bg-color: #f5f6f7;
+  --text-color: #222;
+  --accent: #2563eb;
+  --header-bg: linear-gradient(90deg, #1e293b, #334155);
+  --card-bg: #fff;
+  --footer-bg: #1e293b;
+  --footer-text: #cbd5e1;
+  --highlight: #facc15;
 }
 
-/* ====== Header ====== */
+body.dark {
+  --bg-color: #1e293b;
+  --text-color: #e2e8f0;
+  --accent: #facc15;
+  --header-bg: linear-gradient(90deg, #0f172a, #1e293b);
+  --card-bg: #334155;
+  --footer-bg: #0f172a;
+  --footer-text: #cbd5e1;
+  --highlight: #2563eb;
+}
+
+body.gold {
+  --bg-color: #fff8e1;
+  --text-color: #3e2723;
+  --accent: #ffb300;
+  --header-bg: linear-gradient(90deg, #fbc02d, #f57f17);
+  --card-bg: #fffde7;
+  --footer-bg: #f57f17;
+  --footer-text: #fff3cd;
+  --highlight: #3e2723;
+}
+
+/* === Struktura === */
+body {
+  background: var(--bg-color);
+  color: var(--text-color);
+}
+
 header {
-  background: linear-gradient(90deg, #0052a3, #0077cc);
-  color: white;
-  padding: 16px 0;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-  margin-bottom: 24px;
+  background: var(--header-bg);
+  color: #fff;
+  padding: 15px 0;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
-header .brand {
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.brand {
   display: flex;
   align-items: center;
   gap: 12px;
 }
 
-header .logo {
-  background: white;
-  color: #0052a3;
+.logo {
+  background: var(--highlight);
+  color: #111;
   font-weight: bold;
-  font-size: 28px;
-  width: 45px;
-  height: 45px;
+  font-size: 24px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
 }
 
-header h1 {
-  font-size: 22px;
-  font-weight: 600;
-}
-
-header .muted {
-  font-size: 14px;
-  opacity: 0.9;
-}
-
-/* ====== Navigacija ====== */
-nav {
-  margin-top: 12px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-nav a {
+/* Navigacija */
+header nav a {
+  color: #fff;
   text-decoration: none;
-  color: white;
-  background: rgba(255,255,255,0.15);
-  padding: 6px 12px;
-  border-radius: 6px;
-  transition: all 0.2s;
+  margin-left: 20px;
+  font-size: 15px;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+header nav a:hover {
+  color: var(--highlight);
 }
 
-nav a:hover {
-  background: rgba(255,255,255,0.3);
+/* === Glavni sadržaj === */
+.container {
+  width: 95%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 15px;
 }
 
-nav a.active {
-  background: white;
-  color: #0052a3;
-  font-weight: bold;
-}
-
-/* ====== Kartice ====== */
 .card {
-  background: white;
-  border-radius: 10px;
-  padding: 20px;
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 18px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
   margin-bottom: 20px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
-.card h2 {
-  color: #0052a3;
-  border-bottom: 2px solid #0077cc;
-  padding-bottom: 6px;
-  margin-bottom: 12px;
+h1, h2, h3 {
+  color: var(--text-color);
 }
 
-/* ====== Linkovi i liste ====== */
-a {
-  color: #0052a3;
-  text-decoration: none;
-}
-a:hover {
-  text-decoration: underline;
-}
-
-ul.plain {
-  list-style: none;
-  padding-left: 0;
-}
-ul.plain li {
-  margin: 6px 0;
-}
-
-/* ====== Dugmad ====== */
+/* Dugmad */
 .btn {
-  background-color: #0077cc;
-  color: white;
+  background: var(--accent);
+  color: #fff;
   border: none;
-  padding: 8px 16px;
-  border-radius: 6px;
+  padding: 8px 14px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background 0.3s;
+  font-size: 14px;
+  transition: background 0.2s ease;
 }
 .btn:hover {
-  background-color: #005fa3;
+  filter: brightness(0.9);
 }
 
-/* ====== Zadaci ====== */
-.exercise {
-  background: #e9f2fb;
-  border-left: 4px solid #0077cc;
-  padding: 10px 12px;
-  margin: 6px 0;
+/* === Selektor teme === */
+.theme-selector {
+  margin: 10px 0;
+}
+.theme-selector button {
+  margin-right: 8px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 6px 10px;
   border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: background 0.2s ease;
+}
+.theme-selector button:hover {
+  background: var(--highlight);
+  color: #111;
 }
 
-/* ====== Tekst ====== */
-.small {
-  font-size: 14px;
-}
-.muted {
-  color: #555;
-}
-
-/* ====== Footer ====== */
+/* Footer */
 footer {
-  background-color: #0052a3;
-  color: white;
+  background: var(--footer-bg);
+  color: var(--footer-text);
   text-align: center;
-  padding: 14px 0;
-  margin-top: 40px;
-  font-size: 14px;
-  border-top: 3px solid #0077cc;
+  padding: 15px;
+  font-size: 0.9em;
+  border-top: 2px solid var(--highlight);
 }
 
-/* ====== Dark Mode ====== */
-@media (prefers-color-scheme: dark) {
-  body {
-    background-color: #121212;
-    color: #ddd;
+/* Responsive */
+@media (max-width: 768px) {
+  header nav a {
+    margin-left: 10px;
+    font-size: 14px;
   }
-  header {
-    background: linear-gradient(90deg, #003366, #004c99);
-    box-shadow: 0 2px 8px rgba(255,255,255,0.1);
-  }
-  header .logo {
-    background: #003366;
-    color: white;
-  }
-  nav a {
-    background: rgba(255,255,255,0.1);
-  }
-  nav a:hover {
-    background: rgba(255,255,255,0.25);
-  }
-  nav a.active {
-    background: white;
-    color: #003366;
-  }
-  .card {
-    background: #1e1e1e;
-    box-shadow: 0 2px 6px rgba(255,255,255,0.05);
-  }
-  .card h2 {
-    color: #66aaff;
-    border-bottom-color: #3388ff;
-  }
-  a {
-    color: #66aaff;
-  }
-  .exercise {
-    background: #18263a;
-    border-left-color: #3388ff;
-  }
-  footer {
-    background: #003366;
-    border-top-color: #3388ff;
+  .logo {
+    width: 36px;
+    height: 36px;
+    font-size: 20px;
   }
 }
+🟩 JavaScript za biranje teme
+Uključi ispod <footer> u svakoj 5. razred stranici:
+
+html
+Копирај кȏд
+<script>
+  // Ako postoji prethodno izabrana tema
+  const savedTheme = localStorage.getItem("theme");
+  if (savedTheme) document.body.classList.add(savedTheme);
+
+  function setTheme(theme) {
+    document.body.className = theme;
+    localStorage.setItem("theme", theme);
+  }
+</script>
