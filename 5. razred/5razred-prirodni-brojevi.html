@@ -80,15 +80,15 @@
 </section>
 
 <!-- 4. Zadaci -->
-<section class="card">
+<section class="card" id="zadaci">
   <h2>4. Zadaci — Skupovi brojeva i odnosi</h2>
   <p class="muted small">
-    U zadacima je dat opis skupa brojeva. Upiši elemente tog skupa ili odgovarajući broj.
+    Svaki put kad otvoriš stranicu, dobijaš nove brojeve za vežbu! 🎲
   </p>
 
   <div class="exercise">
     <h3>🟢 Zadatak 1</h3>
-    <p>Koji brojevi pripadaju skupu <strong>{ x | x &lt; 3 }</strong>?</p>
+    <p id="q1"></p>
     <input type="text" id="ans1" placeholder="Na primer: 0, 1, 2">
     <button class="btn" onclick="checkSet1()">Proveri</button>
     <p id="res1" class="result"></p>
@@ -96,15 +96,15 @@
 
   <div class="exercise">
     <h3>🟢 Zadatak 2</h3>
-    <p>Koji brojevi pripadaju skupu <strong>{ x | 9 ≤ x ≤ 22 }</strong>?</p>
-    <input type="text" id="ans2" placeholder="Napiši sve brojeve od 9 do 22">
+    <p id="q2"></p>
+    <input type="text" id="ans2" placeholder="Napiši sve brojeve">
     <button class="btn" onclick="checkSet2()">Proveri</button>
     <p id="res2" class="result"></p>
   </div>
 
   <div class="exercise">
     <h3>🟡 Zadatak 3</h3>
-    <p>Koji je <strong>prethodnik</strong> broja <strong>47</strong>?</p>
+    <p id="q3"></p>
     <input type="number" id="ans3" placeholder="Tvoj odgovor">
     <button class="btn" onclick="checkPrev()">Proveri</button>
     <p id="res3" class="result"></p>
@@ -112,7 +112,7 @@
 
   <div class="exercise">
     <h3>🟡 Zadatak 4</h3>
-    <p>Koji je <strong>sledbenik</strong> broja <strong>128</strong>?</p>
+    <p id="q4"></p>
     <input type="number" id="ans4" placeholder="Tvoj odgovor">
     <button class="btn" onclick="checkNext()">Proveri</button>
     <p id="res4" class="result"></p>
@@ -120,12 +120,93 @@
 
   <div class="exercise">
     <h3>🔵 Zadatak 5</h3>
-    <p>Skup brojeva <strong>{ x | x je deljiv sa 5, a manji je od 20 }</strong>. Koji su to brojevi?</p>
+    <p id="q5"></p>
     <input type="text" id="ans5" placeholder="Odgovor: ...">
     <button class="btn" onclick="checkSet5()">Proveri</button>
     <p id="res5" class="result"></p>
   </div>
 </section>
+
+<script>
+let random = {};
+
+// nasumično generisanje zadataka
+function generateTasks() {
+  // Zadatak 1 — skup x < n
+  random.less = Math.floor(Math.random() * 6) + 3; // npr. 3–8
+  document.getElementById("q1").innerHTML = `Koji brojevi pripadaju skupu <strong>{ x | x < ${random.less} }</strong>?`;
+
+  // Zadatak 2 — skup a ≤ x ≤ b
+  random.a = Math.floor(Math.random() * 10) + 2;
+  random.b = random.a + Math.floor(Math.random() * 8) + 5;
+  document.getElementById("q2").innerHTML = `Koji brojevi pripadaju skupu <strong>{ x | ${random.a} ≤ x ≤ ${random.b} }</strong>?`;
+
+  // Zadatak 3 — prethodnik
+  random.prev = Math.floor(Math.random() * 100) + 5;
+  document.getElementById("q3").innerHTML = `Koji je <strong>prethodnik</strong> broja <strong>${random.prev}</strong>?`;
+
+  // Zadatak 4 — sledbenik
+  random.next = Math.floor(Math.random() * 150) + 10;
+  document.getElementById("q4").innerHTML = `Koji je <strong>sledbenik</strong> broja <strong>${random.next}</strong>?`;
+
+  // Zadatak 5 — deljivost sa n
+  random.div = [2, 3, 4, 5, 6, 10][Math.floor(Math.random() * 6)];
+  random.limit = Math.floor(Math.random() * 20) + 10;
+  document.getElementById("q5").innerHTML = `Skup brojeva <strong>{ x | x je deljiv sa ${random.div}, a manji je od ${random.limit} }</strong>. Koji su to brojevi?`;
+}
+
+// funkcije za proveru
+function normalize(input) {
+  return input.replace(/\s+/g, '').replace(/,$/, '');
+}
+
+function checkSet1() {
+  const ans = normalize(document.getElementById("ans1").value);
+  const correct = Array.from({length: random.less}, (_,i)=>i).join(",");
+  document.getElementById("res1").innerHTML =
+    ans === correct ? "✅ Tačno!" :
+    `❌ Nije tačno. Tačan skup je { ${correct} }.`;
+}
+
+function checkSet2() {
+  const ans = normalize(document.getElementById("ans2").value);
+  const correct = Array.from({length: random.b - random.a + 1}, (_,i)=>i+random.a).join(",");
+  document.getElementById("res2").innerHTML =
+    ans === correct ? "✅ Odlično!" :
+    `❌ Nije tačno. Tačan skup je { ${correct} }.`;
+}
+
+function checkPrev() {
+  const ans = parseInt(document.getElementById("ans3").value);
+  document.getElementById("res3").innerHTML =
+    ans === random.prev - 1 ? "✅ Tačno!" :
+    `❌ Nije tačno. Prethodnik broja ${random.prev} je ${random.prev - 1}.`;
+}
+
+function checkNext() {
+  const ans = parseInt(document.getElementById("ans4").value);
+  document.getElementById("res4").innerHTML =
+    ans === random.next + 1 ? "✅ Tačno!" :
+    `❌ Nije tačno. Sledbenik broja ${random.next} je ${random.next + 1}.`;
+}
+
+function checkSet5() {
+  const ans = normalize(document.getElementById("ans5").value);
+  const correctArr = [];
+  for(let i=0;i<random.limit;i++){
+    if(i % random.div === 0) correctArr.push(i);
+  }
+  const correct = correctArr.join(",");
+  document.getElementById("res5").innerHTML =
+    ans === correct ? "✅ Sjajno!" :
+    `❌ Nije tačno. Brojevi su { ${correct} }.`;
+}
+
+// pokretanje pri učitavanju
+window.onload = generateTasks;
+</script>
+  
+
 
 <!-- Kontakt -->
 <section class="card" id="kontakt">
@@ -142,86 +223,8 @@
   <div class="container small">© 2025 Matematika — 5. razred. Napravljeno sa ♥.</div>
 </footer>
 
-<script>
-function generateSet() {
-  const type = document.getElementById('taskType').value;
-  const n1 = parseInt(document.getElementById('num1').value,10);
-  const n2 = parseInt(document.getElementById('num2').value,10);
-  let arr = [];
 
-  if(type === "range") {
-    const min = Math.min(n1,n2)+1;
-    const max = Math.max(n1,n2);
-    for(let i=min; i<max; i++) arr.push(i);
-    document.getElementById('setOutput').textContent = `Skup brojeva { x | ${min} ≤ x ≤ ${max} } = { ${arr.join(', ')} }`;
-  } 
-  else if(type === "less") {
-    for(let i=1; i<n1; i++) arr.push(i);
-    document.getElementById('setOutput').textContent = `Skup brojeva { x | x < ${n1} } = { ${arr.join(', ')} }`;
-  } 
-  else if(type === "greater") {
-    for(let i=n1+1; i<=n2; i++) arr.push(i);
-    document.getElementById('setOutput').textContent = `Skup brojeva { x | x > ${n1} i x ≤ ${n2} } = { ${arr.join(', ')} }`;
-  }
-}
-
-function generatePrevNextTask() {
-  const n = parseInt(document.getElementById('numInput').value,10);
-  const type = document.getElementById('prevNextType').value;
-  if(isNaN(n) || n<0){ alert("Unesi prirodan broj!"); return; }
-
-  let output = "";
-  if(type === "prev") {
-    output = `Prethodnik broja ${n} = ${n>0 ? n-1 : "nema"}`;
-  } else {
-    output = `Sledbenik broja ${n} = ${n+1}`;
-  }
-
-  document.getElementById('prevNextOutput').textContent = output;
-}
-
-function normalize(input) {
-  return input.replace(/\s+/g, '').replace(/,$/, '');
-}
-
-function checkSet1() {
-  const ans = normalize(document.getElementById("ans1").value);
-  const correct = "0,1,2";
-  document.getElementById("res1").innerHTML =
-    ans === correct ? "✅ Tačno! Skup ima elemente 0, 1 i 2." :
-    "❌ Nije tačno. Probaj ponovo — brojevi manji od 3 su 0, 1 i 2.";
-}
-
-function checkSet2() {
-  const ans = normalize(document.getElementById("ans2").value);
-  const correct = Array.from({length:14},(_,i)=>i+9).join(",");
-  document.getElementById("res2").innerHTML =
-    ans === correct ? "✅ Odlično! To su svi brojevi od 9 do 22." :
-    "❌ Pogledaj ponovo — napiši sve brojeve od 9 do 22 bez razmaka (npr. 9,10,11...).";
-}
-
-function checkPrev() {
-  const ans = parseInt(document.getElementById("ans3").value);
-  document.getElementById("res3").innerHTML =
-    ans === 46 ? "✅ Tačno! Prethodnik broja 47 je 46." :
-    "❌ Nije tačno. Prethodnik broja 47 je 46.";
-}
-
-function checkNext() {
-  const ans = parseInt(document.getElementById("ans4").value);
-  document.getElementById("res4").innerHTML =
-    ans === 129 ? "✅ Tačno! Sledbenik broja 128 je 129." :
-    "❌ Nije tačno. Sledbenik broja 128 je 129.";
-}
-
-function checkSet5() {
-  const ans = normalize(document.getElementById("ans5").value);
-  const correct = "0,5,10,15";
-  document.getElementById("res5").innerHTML =
-    ans === correct ? "✅ Sjajno! To su brojevi deljivi sa 5 manji od 20." :
-    "❌ Nije tačno. Brojevi koji zadovoljavaju uslov su 0, 5, 10 i 15.";
-}
-</script>
 
 </body>
 </html>
+
