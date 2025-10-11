@@ -45,39 +45,7 @@
   </p>
 </section>
 
-<!-- 2. Generisanje skupa -->
-<section class="card">
-  <h2>2. Generisanje skupa po uslovu</h2>
-  <p class="muted small">Izaberi tip zadatka:</p>
-  <select id="taskType">
-    <option value="range">x između dva broja</option>
-    <option value="less">x manje od broja</option>
-    <option value="greater">x veće od broja</option>
-  </select>
-  <div style="margin:10px 0">
-    <label for="num1">Prvi broj: </label>
-    <input type="number" id="num1" value="3" style="width:60px">
-    <label for="num2">Drugi broj: </label>
-    <input type="number" id="num2" value="10" style="width:60px">
-    <button class="btn" onclick="generateSet()">Prikaži skup</button>
-  </div>
-  <div id="setOutput" class="exercise small"></div>
-</section>
 
-<!-- 3. Prethodnik/Sledebenik -->
-<section class="card">
-  <h2>3. Prethodnik / Sledbenik u skupu</h2>
-  <p class="muted small">Izaberi broj i tip zadatka:</p>
-  <div style="margin:10px 0">
-    <input type="number" id="numInput" value="5" style="width:60px">
-    <select id="prevNextType">
-      <option value="prev">Prethodnik</option>
-      <option value="next">Sledbenik</option>
-    </select>
-    <button class="btn" onclick="generatePrevNextTask()">Prikaži zadatak</button>
-  </div>
-  <div id="prevNextOutput" class="exercise small"></div>
-</section>
 
 <!-- 4. Zadaci -->
 <section class="card" id="zadaci">
@@ -227,4 +195,5 @@ window.onload = generateTasks;
 
 </body>
 </html>
+
 
