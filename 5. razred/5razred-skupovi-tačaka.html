@@ -85,47 +85,37 @@
       </svg>
     </section>
 
-  <!-- 3. Unija, presek i razlika skupova -->
-<section class="card" id="vennSection" style="background:white; border-radius:12px; padding:16px; box-shadow:0 0 10px rgba(0,0,0,0.1);">
-  <h2>3. Unija, presek i razlika skupova</h2>
+<!-- 3. Unija, presek, razlika -->
+<section class="card">
+  <h2>3. Unija, presek i razlika skupova tačaka</h2>
   <p class="muted small">
-    <strong>Unija:</strong> sve tačke koje pripadaju barem jednom od skupova.<br>
-    <strong>Presek:</strong> tačke koje pripadaju oba skupa.<br>
-    <strong>Razlika A\B:</strong> tačke koje pripadaju skupu A, a ne pripadaju skupu B.
+    Klikom na dugmad vidi kako izgledaju različite operacije sa skupovima A i B.
   </p>
 
-  <svg id="vennPoints" width="270" height="160" viewBox="0 0 270 160">
+  <svg id="venn" width="320" height="200" viewBox="0 0 320 200">
     <defs>
-      <!-- maska za presek -->
       <mask id="maskIntersection">
-        <rect width="100%" height="100%" fill="black"></rect>
-        <circle cx="95" cy="85" r="50" fill="white"></circle>
-        <circle cx="165" cy="85" r="50" fill="white"></circle>
+        <rect width="100%" height="100%" fill="black" />
+        <circle cx="110" cy="100" r="60" fill="white" />
+        <circle cx="190" cy="100" r="60" fill="white" />
       </mask>
-
-      <!-- maska za razliku A\B -->
       <mask id="maskDifference">
-        <rect width="100%" height="100%" fill="black"></rect>
-        <circle cx="95" cy="85" r="50" fill="white"></circle>
-        <circle cx="165" cy="85" r="50" fill="black"></circle>
+        <rect width="100%" height="100%" fill="black" />
+        <circle cx="110" cy="100" r="60" fill="white" />
+        <circle cx="190" cy="100" r="60" fill="black" />
       </mask>
     </defs>
 
-    <!-- Skupovi A i B - samo ivice -->
-    <circle id="setA" cx="95" cy="85" r="50" fill="none" stroke="#1d4ed8" stroke-width="2"></circle>
-    <circle id="setB" cx="165" cy="85" r="50" fill="none" stroke="#d97706" stroke-width="2"></circle>
+    <rect id="fillRect" width="100%" height="100%" fill="none"></rect>
 
-    <!-- Oblasti za bojenje -->
-    <rect id="fillUnion" width="100%" height="100%" fill="#93c5fd" fill-opacity="0" pointer-events="none"></rect>
-    <rect id="fillIntersection" width="100%" height="100%" fill="#a855f7" fill-opacity="0" mask="url(#maskIntersection)" pointer-events="none"></rect>
-    <rect id="fillDifference" width="100%" height="100%" fill="#60a5fa" fill-opacity="0" mask="url(#maskDifference)" pointer-events="none"></rect>
+    <circle id="A" cx="110" cy="100" r="60" fill="none" stroke="black" stroke-width="2"></circle>
+    <circle id="B" cx="190" cy="100" r="60" fill="none" stroke="black" stroke-width="2"></circle>
 
-    <!-- Oznake -->
-    <text x="70" y="35" font-size="20" font-weight="bold">A</text>
-    <text x="185" y="35" font-size="20" font-weight="bold">B</text>
+    <text x="95" y="35" font-size="20">A</text>
+    <text x="185" y="35" font-size="20">B</text>
   </svg>
 
-  <div style="margin-top:8px">
+  <div style="margin-top: 10px;">
     <button class="btn" onclick="showSet('union')">Unija</button>
     <button class="btn" onclick="showSet('intersection')">Presek</button>
     <button class="btn" onclick="showSet('difference')">Razlika A\B</button>
@@ -136,27 +126,6 @@
     <strong>Zadatak:</strong> Označi tačke koje pripadaju A∩B, A∪B i A\B.
   </div>
 </section>
-
-<script>
-function showSet(type) {
-  const union = document.getElementById('fillUnion');
-  const inter = document.getElementById('fillIntersection');
-  const diff  = document.getElementById('fillDifference');
-
-  // Resetuj sve
-  [union, inter, diff].forEach(e => e.setAttribute('fill-opacity', '0'));
-
-  if (type === 'union') {
-    union.setAttribute('fill-opacity', '0.5'); // oba kruga istom bojom
-  } 
-  else if (type === 'intersection') {
-    inter.setAttribute('fill-opacity', '0.6'); // samo presek
-  } 
-  else if (type === 'difference') {
-    diff.setAttribute('fill-opacity', '0.6'); // samo deo A
-  }
-}
-</script>
 
     <!-- 4. Kružna linija i krug -->
     <section class="card">
@@ -230,6 +199,7 @@ function showSet(type) {
   </script>
 </body>
 </html>
+
 
 
 
