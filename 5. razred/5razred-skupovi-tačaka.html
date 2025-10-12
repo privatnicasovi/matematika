@@ -86,8 +86,8 @@
     </section>
 
     <!-- 3. Unija, presek, razlika -->
-   <!-- 3. Unija, presek, razlika -->
-<section class="card" id="vennSection">
+ <!-- 3. Unija, presek, razlika -->
+<section class="card" id="vennSection" style="background:white; border-radius:12px; padding:16px; box-shadow:0 0 10px rgba(0,0,0,0.1);">
   <h2>3. Unija, presek i razlika skupova tačaka</h2>
   <p class="muted small">
     <strong>Unija:</strong> sve tačke koje pripadaju barem jednom od skupova.<br>
@@ -95,14 +95,37 @@
     <strong>Razlika A\B:</strong> tačke koje pripadaju skupu A, a ne pripadaju skupu B.
   </p>
 
-  <svg id="vennPoints" width="260" height="160">
-    <!-- Skup A -->
-    <circle id="setA" cx="95" cy="85" r="50" fill="white" stroke="#1d4ed8" stroke-width="2"></circle>
-    <!-- Skup B -->
-    <circle id="setB" cx="165" cy="85" r="50" fill="white" stroke="#d97706" stroke-width="2"></circle>
+  <svg id="vennPoints" width="270" height="160" viewBox="0 0 270 160">
+    <!-- definicija maski -->
+    <defs>
+      <!-- maska za presek -->
+      <mask id="maskIntersection">
+        <rect width="100%" height="100%" fill="black"></rect>
+        <circle cx="95" cy="85" r="50" fill="white"></circle>
+        <circle cx="165" cy="85" r="50" fill="white"></circle>
+      </mask>
+
+      <!-- maska za razliku A\B -->
+      <mask id="maskDifference">
+        <rect width="100%" height="100%" fill="black"></rect>
+        <circle cx="95" cy="85" r="50" fill="white"></circle>
+        <circle cx="165" cy="85" r="50" fill="black"></circle>
+      </mask>
+    </defs>
+
+    <!-- Skupovi A i B -->
+    <circle id="setA" cx="95" cy="85" r="50" fill="none" stroke="#1d4ed8" stroke-width="2"></circle>
+    <circle id="setB" cx="165" cy="85" r="50" fill="none" stroke="#d97706" stroke-width="2"></circle>
+
+    <!-- Oblasti za bojenje -->
+    <circle id="fillA"  cx="95" cy="85" r="50" fill="#60a5fa" fill-opacity="0" pointer-events="none"></circle>
+    <circle id="fillB"  cx="165" cy="85" r="50" fill="#fde047" fill-opacity="0" pointer-events="none"></circle>
+    <rect id="fillIntersection" width="100%" height="100%" fill="#a855f7" fill-opacity="0" mask="url(#maskIntersection)" pointer-events="none"></rect>
+    <rect id="fillDifference" width="100%" height="100%" fill="#2563eb" fill-opacity="0" mask="url(#maskDifference)" pointer-events="none"></rect>
+
     <!-- Oznake -->
-    <text x="70" y="35">A</text>
-    <text x="185" y="35">B</text>
+    <text x="70" y="35" font-size="20" font-weight="bold">A</text>
+    <text x="185" y="35" font-size="20" font-weight="bold">B</text>
   </svg>
 
   <div style="margin-top:8px">
@@ -116,6 +139,29 @@
     <strong>Zadatak:</strong> Označi tačke koje pripadaju A∩B, A∪B i A\B.
   </div>
 </section>
+
+<script>
+function showSet(type) {
+  const fillA = document.getElementById('fillA');
+  const fillB = document.getElementById('fillB');
+  const inter = document.getElementById('fillIntersection');
+  const diff = document.getElementById('fillDifference');
+
+  // Resetuj sve
+  [fillA, fillB, inter, diff].forEach(e => e.setAttribute('fill-opacity','0'));
+
+  if (type === 'union') {
+    fillA.setAttribute('fill-opacity','0.4');
+    fillB.setAttribute('fill-opacity','0.4');
+  } 
+  else if (type === 'intersection') {
+    inter.setAttribute('fill-opacity','0.5');
+  } 
+  else if (type === 'difference') {
+    diff.setAttribute('fill-opacity','0.5');
+  } 
+}
+</script>
 
     <!-- 4. Kružna linija i krug -->
     <section class="card">
@@ -189,4 +235,5 @@
   </script>
 </body>
 </html>
+
 
