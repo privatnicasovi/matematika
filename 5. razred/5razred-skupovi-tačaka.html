@@ -86,35 +86,36 @@
     </section>
 
     <!-- 3. Unija, presek, razlika -->
-    <section class="card" id="vennSection">
-      <h2>3. Unija, presek i razlika skupova tačaka</h2>
-      <p class="muted small">
-        <strong>Unija:</strong> sve tačke koje pripadaju barem jednom od skupova.<br>
-        <strong>Presek:</strong> tačke koje pripadaju oba skupa.<br>
-        <strong>Razlika A\B:</strong> tačke koje pripadaju skupu A, a ne pripadaju skupu B.
-      </p>
+   <!-- 3. Unija, presek, razlika -->
+<section class="card" id="vennSection">
+  <h2>3. Unija, presek i razlika skupova tačaka</h2>
+  <p class="muted small">
+    <strong>Unija:</strong> sve tačke koje pripadaju barem jednom od skupova.<br>
+    <strong>Presek:</strong> tačke koje pripadaju oba skupa.<br>
+    <strong>Razlika A\B:</strong> tačke koje pripadaju skupu A, a ne pripadaju skupu B.
+  </p>
 
-      <svg id="vennPoints" width="260" height="160">
-        <!-- Skup A -->
-        <circle id="setA" cx="95" cy="85" r="50" fill="#2563eb" fill-opacity="0.3" stroke="#1d4ed8" stroke-width="2"></circle>
-        <!-- Skup B -->
-        <circle id="setB" cx="165" cy="85" r="50" fill="#facc15" fill-opacity="0.3" stroke="#d97706" stroke-width="2"></circle>
-        <!-- Oznake -->
-        <text x="70" y="35">A</text>
-        <text x="185" y="35">B</text>
-      </svg>
+  <svg id="vennPoints" width="260" height="160">
+    <!-- Skup A -->
+    <circle id="setA" cx="95" cy="85" r="50" fill="white" stroke="#1d4ed8" stroke-width="2"></circle>
+    <!-- Skup B -->
+    <circle id="setB" cx="165" cy="85" r="50" fill="white" stroke="#d97706" stroke-width="2"></circle>
+    <!-- Oznake -->
+    <text x="70" y="35">A</text>
+    <text x="185" y="35">B</text>
+  </svg>
 
-      <div style="margin-top:8px">
-        <button class="btn" onclick="showSet('union')">Unija</button>
-        <button class="btn" onclick="showSet('intersection')">Presek</button>
-        <button class="btn" onclick="showSet('difference')">Razlika A\B</button>
-        <button class="btn" onclick="showSet('reset')">Poništi</button>
-      </div>
+  <div style="margin-top:8px">
+    <button class="btn" onclick="showSet('union')">Unija</button>
+    <button class="btn" onclick="showSet('intersection')">Presek</button>
+    <button class="btn" onclick="showSet('difference')">Razlika A\B</button>
+    <button class="btn" onclick="showSet('reset')">Poništi</button>
+  </div>
 
-      <div class="exercise small">
-        <strong>Zadatak:</strong> Označi tačke koje pripadaju A∩B, A∪B i A\B.
-      </div>
-    </section>
+  <div class="exercise small">
+    <strong>Zadatak:</strong> Označi tačke koje pripadaju A∩B, A∪B i A\B.
+  </div>
+</section>
 
     <!-- 4. Kružna linija i krug -->
     <section class="card">
@@ -188,3 +189,4 @@
   </script>
 </body>
 </html>
+
