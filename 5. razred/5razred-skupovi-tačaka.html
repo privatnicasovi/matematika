@@ -101,16 +101,16 @@
       <pattern id="srafura" patternUnits="userSpaceOnUse" width="6" height="6">
         <path d="M0,0 l6,6" stroke="#9333ea" stroke-width="1.5"/>
       </pattern>
-      <!-- Maska preseka -->
-      <mask id="maskPresek">
+      <!-- Maska unije -->
+      <mask id="maskUnija">
         <rect width="100%" height="100%" fill="black"/>
         <circle cx="110" cy="100" r="60" fill="white"/>
         <circle cx="190" cy="100" r="60" fill="white"/>
       </mask>
     </defs>
 
-    <!-- Šrafirani deo samo u preseku -->
-    <rect width="100%" height="100%" fill="url(#srafura)" mask="url(#maskPresek)"></rect>
+    <!-- Šrafirani deo unija -->
+    <rect width="100%" height="100%" fill="url(#srafura)" mask="url(#maskUnija)"></rect>
 
     <!-- Okviri krugova -->
     <circle cx="110" cy="100" r="60" fill="none" stroke="black" stroke-width="2"></circle>
@@ -298,6 +298,7 @@
   </script>
 </body>
 </html>
+
 
 
 
