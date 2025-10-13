@@ -107,24 +107,34 @@
   </div>
 
   <!-- Presek -->
-  <div style="margin-bottom: 24px;">
-    <h3>Presek (A ∩ B)</h3>
-    <svg width="320" height="200" viewBox="0 0 320 200">
-      <defs>
-        <mask id="maskPresek">
-          <rect width="100%" height="100%" fill="black"/>
-          <circle cx="110" cy="100" r="60" fill="white"/>
-          <circle cx="190" cy="100" r="60" fill="white"/>
-        </mask>
-      </defs>
-      <circle cx="110" cy="100" r="60" fill="#9333ea" fill-opacity="0.5" mask="url(#maskPresek)"></circle>
-      <circle cx="190" cy="100" r="60" fill="#9333ea" fill-opacity="0.5" mask="url(#maskPresek)"></circle>
-      <circle cx="110" cy="100" r="60" fill="none" stroke="black" stroke-width="2"></circle>
-      <circle cx="190" cy="100" r="60" fill="none" stroke="black" stroke-width="2"></circle>
-      <text x="95" y="35" font-size="20">A</text>
-      <text x="185" y="35" font-size="20">B</text>
-    </svg>
-  </div>
+  <!-- Presek -->
+<div style="margin-bottom: 24px;">
+  <h3>Presek (A ∩ B)</h3>
+  <svg width="320" height="200" viewBox="0 0 320 200">
+    <defs>
+      <mask id="maskPresek">
+        <rect width="100%" height="100%" fill="black"/>
+        <circle cx="110" cy="100" r="60" fill="white"/>
+        <circle cx="190" cy="100" r="60" fill="white"/>
+      </mask>
+    </defs>
+
+    <!-- Obični krugovi A i B (providni) -->
+    <circle cx="110" cy="100" r="60" fill="#2563eb" fill-opacity="0.3"></circle>
+    <circle cx="190" cy="100" r="60" fill="#facc15" fill-opacity="0.3"></circle>
+
+    <!-- Tamniji presek (ljubičast samo u zajedničkom delu) -->
+    <circle cx="150" cy="100" r="60" fill="#9333ea" fill-opacity="0.7" mask="url(#maskPresek)"></circle>
+
+    <!-- Okviri krugova -->
+    <circle cx="110" cy="100" r="60" fill="none" stroke="black" stroke-width="2"></circle>
+    <circle cx="190" cy="100" r="60" fill="none" stroke="black" stroke-width="2"></circle>
+
+    <!-- Oznake A i B -->
+    <text x="95" y="35" font-size="20">A</text>
+    <text x="185" y="35" font-size="20">B</text>
+  </svg>
+</div>
 
   <!-- Razlika A\B -->
   <div style="margin-bottom: 24px;">
@@ -245,6 +255,7 @@
   </script>
 </body>
 </html>
+
 
 
 
