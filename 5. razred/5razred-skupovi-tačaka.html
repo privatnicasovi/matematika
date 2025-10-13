@@ -125,36 +125,36 @@
 <!-- Presek -->
 <div style="margin-bottom: 24px;">
   <h3>Presek (A ∩ B)</h3>
-  <svg width="320" height="200" viewBox="0 0 320 200">
-    <defs>
-      <!-- Prvi krug (A) -->
-      <circle id="circleA" cx="110" cy="100" r="60"></circle>
-      <!-- Drugi krug (B) -->
-      <circle id="circleB" cx="190" cy="100" r="60"></circle>
-
-      <!-- Oblik preseka pomoću maske -->
-      <mask id="maskPresek">
-        <rect width="100%" height="100%" fill="black"/>
-        <!-- Obojimo belom samo zajednički deo A i B -->
-        <g>
-          <use href="#circleA" fill="white" style="mix-blend-mode:multiply"/>
-          <use href="#circleB" fill="white" style="mix-blend-mode:multiply"/>
-          
-        </g>
-      </mask>
-    </defs>
-
-    <!-- Boja preseka -->
-    <rect width="320" height="200" fill="#ea3333" fill-opacity="0.5" mask="url(#maskPresek)"></rect>
-
-    <!-- Okviri krugova -->
-    <circle cx="110" cy="100" r="60" fill="none" stroke="black" stroke-width="2"></circle>
-    <circle cx="190" cy="100" r="60" fill="none" stroke="black" stroke-width="2"></circle>
-
-    <!-- Oznake -->
-    <text x="95" y="35" font-size="20">A</text>
-    <text x="185" y="35" font-size="20">B</text>
-  </svg>
+    <svg width="320" height="200" viewBox="0 0 320 200">
+      <defs>
+        <mask id="maskAminusB">
+          <rect width="100%" height="100%" fill="black"/>
+          <circle cx="110" cy="100" r="60" fill="white"/>
+          <circle cx="190" cy="100" r="60" fill="black"/>
+        </mask>
+      </defs>
+      <circle cx="110" cy="100" r="60" fill="#2563eb" fill-opacity="0.5" mask="url(#maskAminusB)"></circle>
+      <circle cx="110" cy="100" r="60" fill="none" stroke="black" stroke-width="2"></circle>
+      <circle cx="190" cy="100" r="60" fill="none" stroke="black" stroke-width="2"></circle>
+      <text x="95" y="35" font-size="20">A</text>
+      <text x="185" y="35" font-size="20">B</text>
+    </svg>
+      <svg width="320" height="200" viewBox="0 0 320 200">
+      <defs>
+        <mask id="maskBminusA">
+          <rect width="100%" height="100%" fill="black"/>
+          <circle cx="190" cy="100" r="60" fill="white"/>
+          <circle cx="110" cy="100" r="60" fill="black"/>
+        </mask>
+      </defs>
+      <circle cx="190" cy="100" r="60" fill="#facc15" fill-opacity="0.6" mask="url(#maskBminusA)"></circle>
+      <circle cx="110" cy="100" r="60" fill="none" stroke="black" stroke-width="2"></circle>
+      <circle cx="190" cy="100" r="60" fill="none" stroke="black" stroke-width="2"></circle>
+      <text x="95" y="35" font-size="20">A</text>
+      <text x="185" y="35" font-size="20">B</text>
+    </svg>
+  
+  
 </div>
 
 
@@ -299,6 +299,7 @@
   </script>
 </body>
 </html>
+
 
 
 
