@@ -5,33 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Skupovi tačaka — 5. razred</title>
   <link rel="stylesheet" href="style5.css">
- <!-- <style>
-    /* dodatno za sekciju 3 */
-    #vennSection {
-      background: white;
-      border-radius: 12px;
-      padding: 16px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    #vennPoints text {
-      font-size: 20px;
-      font-weight: bold;
-      fill: black;
-    }
-    .btn {
-      margin: 4px;
-      padding: 6px 12px;
-      border: none;
-      border-radius: 6px;
-      background-color: #2563eb;
-      color: white;
-      cursor: pointer;
-      transition: 0.2s;
-    }
-    .btn:hover {
-      background-color: #1e40af;
-    }
-  </style> -->
+ 
 </head>
 <body>
   <header>
@@ -148,25 +122,30 @@
   </svg>
 </div>
 
-!-- Presek -->
+<!-- Presek -->
 <div style="margin-bottom: 24px;">
   <h3>Presek (A ∩ B)</h3>
   <svg width="320" height="200" viewBox="0 0 320 200">
     <defs>
       <!-- Šrafura -->
       <pattern id="srafura" patternUnits="userSpaceOnUse" width="6" height="6">
-        <path d="M0,0 l6,6" stroke="#9333ea" stroke-width="1.5"/>
+        <path d="M0,0 l6,6" stroke="#9333ea" stroke-width="1.2"/>
       </pattern>
-      <!-- Maska preseka -->
-      <mask id="maskPresek">
-        <rect width="100%" height="100%" fill="black"/>
-        <circle cx="110" cy="100" r="60" fill="white"/>
-        <circle cx="190" cy="100" r="60" fill="white"/>
-      </mask>
+
+      <!-- Oblik preseka -->
+      <clipPath id="clipPresek">
+        <circle cx="110" cy="100" r="60"></circle>
+        <circle cx="190" cy="100" r="60"></circle>
+      </clipPath>
     </defs>
 
-    <!-- Šrafirani deo samo u preseku -->
-    <rect width="100%" height="100%" fill="url(#srafura)" mask="url(#maskPresek)"></rect>
+    <!-- Pozadina bela -->
+    <rect width="100%" height="100%" fill="white"></rect>
+
+    <!-- Šrafura samo u preseku -->
+    <g clip-path="url(#clipPresek)">
+      <rect width="320" height="200" fill="url(#srafura)"></rect>
+    </g>
 
     <!-- Okviri krugova -->
     <circle cx="110" cy="100" r="60" fill="none" stroke="black" stroke-width="2"></circle>
@@ -221,9 +200,6 @@
   </div>
 </section>
       
-
-
-    <!-- 4. Kružna linija i krug -->
    <!-- 4. Kružna linija i krug -->
 <section class="card">
   <h2>4. Krug i kružna linija</h2>
@@ -322,6 +298,7 @@
   </script>
 </body>
 </html>
+
 
 
 
