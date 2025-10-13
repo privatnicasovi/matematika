@@ -120,5 +120,17 @@ footer {
 }
 
 
+<script>
+  // Tema
+  const savedTheme = localStorage.getItem("theme");
+  if (savedTheme) document.body.classList.add(savedTheme);
+
+  function setTheme(theme) {
+    document.body.className = theme;
+    localStorage.setItem("theme", theme);
+  }
+</script>
+
+
 
 
