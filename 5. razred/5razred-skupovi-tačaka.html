@@ -127,35 +127,35 @@
   <h3>Presek (A ∩ B)</h3>
   <svg width="320" height="200" viewBox="0 0 320 200">
     <defs>
-      <!-- Šrafura -->
-      <pattern id="srafura" patternUnits="userSpaceOnUse" width="6" height="6">
-        <path d="M0,0 l6,6" stroke="#9333ea" stroke-width="1.2"/>
-      </pattern>
+      <!-- Prvi krug (A) -->
+      <circle id="circleA" cx="110" cy="100" r="60"></circle>
+      <!-- Drugi krug (B) -->
+      <circle id="circleB" cx="190" cy="100" r="60"></circle>
 
-      <!-- Oblik preseka -->
-      <clipPath id="clipPresek">
-        <circle cx="110" cy="100" r="60"></circle>
-        <circle cx="190" cy="100" r="60"></circle>
-      </clipPath>
+      <!-- Oblik preseka pomoću maske -->
+      <mask id="maskPresek">
+        <rect width="100%" height="100%" fill="black"/>
+        <!-- Obojimo belom samo zajednički deo A i B -->
+        <g>
+          <use href="#circleA" fill="white"/>
+          <use href="#circleB" fill="white" style="mix-blend-mode:multiply"/>
+        </g>
+      </mask>
     </defs>
 
-    <!-- Pozadina bela -->
-    <rect width="100%" height="100%" fill="white"></rect>
-
-    <!-- Šrafura samo u preseku -->
-    <g clip-path="url(#clipPresek)">
-      <rect width="320" height="200" fill="url(#srafura)"></rect>
-    </g>
+    <!-- Boja preseka -->
+    <rect width="320" height="200" fill="#9333ea" fill-opacity="0.5" mask="url(#maskPresek)"></rect>
 
     <!-- Okviri krugova -->
     <circle cx="110" cy="100" r="60" fill="none" stroke="black" stroke-width="2"></circle>
     <circle cx="190" cy="100" r="60" fill="none" stroke="black" stroke-width="2"></circle>
 
-    <!-- Oznake A i B -->
+    <!-- Oznake -->
     <text x="95" y="35" font-size="20">A</text>
     <text x="185" y="35" font-size="20">B</text>
   </svg>
 </div>
+
 
   <!-- Razlika A\B -->
   <div style="margin-bottom: 24px;">
@@ -298,6 +298,7 @@
   </script>
 </body>
 </html>
+
 
 
 
