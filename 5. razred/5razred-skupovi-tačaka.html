@@ -106,17 +106,17 @@
     </svg>
   </div>
 
-<!-- Presek -->
+<!-- Presek (A ∩ B) -->
 <div style="margin-bottom: 24px;">
   <h3>Presek (A ∩ B)</h3>
   <svg width="320" height="200" viewBox="0 0 320 200">
     <defs>
-      <!-- Šrafura za presek -->
-      <pattern id="patternSrafura" patternUnits="userSpaceOnUse" width="8" height="8" patternTransform="rotate(45)">
+      <!-- Šrafura -->
+      <pattern id="srafura" patternUnits="userSpaceOnUse" width="8" height="8" patternTransform="rotate(45)">
         <line x1="0" y1="0" x2="0" y2="8" stroke="black" stroke-width="1" />
       </pattern>
 
-      <!-- Maska preseka (zajednički deo) -->
+      <!-- Maska samo za presek -->
       <mask id="maskPresek">
         <rect width="100%" height="100%" fill="black" />
         <circle cx="110" cy="100" r="60" fill="white" />
@@ -124,17 +124,17 @@
       </mask>
     </defs>
 
-    <!-- Belo pozadinsko polje -->
+    <!-- Pozadina -->
     <rect width="100%" height="100%" fill="white" />
 
-    <!-- Šrafirani deo samo u preseku -->
-    <rect width="100%" height="100%" fill="url(#patternSrafura)" mask="url(#maskPresek)" />
-
-    <!-- Okviri krugova -->
+    <!-- Krugovi (samo konture) -->
     <circle cx="110" cy="100" r="60" fill="none" stroke="black" stroke-width="2" />
     <circle cx="190" cy="100" r="60" fill="none" stroke="black" stroke-width="2" />
 
-    <!-- Oznake A i B -->
+    <!-- Samo presek šrafiran -->
+    <rect width="100%" height="100%" fill="url(#srafura)" mask="url(#maskPresek)" />
+
+    <!-- Oznake -->
     <text x="95" y="35" font-size="20">A</text>
     <text x="185" y="35" font-size="20">B</text>
   </svg>
@@ -284,6 +284,7 @@
   </script>
 </body>
 </html>
+
 
 
 
