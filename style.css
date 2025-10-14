@@ -203,4 +203,49 @@ footer {
     height: 36px;
     font-size: 20px;
   }
+
+/* 🌞 Svetla tema (podrazumevano) */
+body {
+  background-color: #ffffff;
+  color: #111;
+  transition: background-color 0.3s, color 0.3s;
 }
+
+/* 🌙 Tamna tema */
+body.dark {
+  background-color: #0f172a;
+  color: #f1f5f9;
+}
+
+body.dark .card {
+  background-color: #1e293b;
+  color: #f1f5f9;
+  box-shadow: 0 0 10px rgba(255,255,255,0.1);
+}
+
+body.dark header, 
+body.dark footer {
+  background-color: #111827;
+  color: #f8fafc;
+}
+
+/* ⭐ Zlatna tema */
+body.gold {
+  background-color: #fffbea;
+  color: #3b2f2f;
+}
+
+body.gold .card {
+  background-color: #fff4cc;
+  color: #3b2f2f;
+  border: 1px solid #facc15;
+}
+
+body.gold header, 
+body.gold footer {
+  background-color: #facc15;
+  color: #3b2f2f;
+}
+  
+}
+
