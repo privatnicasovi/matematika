@@ -22,6 +22,11 @@ header {
   z-index: 10;
 }
 
+header h1,
+header .muted {
+  color: #ffffff !important; /* bela boja, "!" forsira da se primeni i preko tamne/zlatne teme */
+}
+
 header .container {
   display: flex;
   justify-content: space-between;
@@ -298,5 +303,6 @@ body.gold .muted { color: #92400e; }
 
 body.dark .theme-selector button { background: #334155; color: #f1f5f9; }
 body.gold .theme-selector button { background: #fef08a; color: #4a3000; }
+
 
 
