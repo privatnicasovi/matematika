@@ -203,49 +203,80 @@ footer {
     height: 36px;
     font-size: 20px;
   }
-
-/* 🌞 Svetla tema (podrazumevano) */
-body {
-  background-color: #ffffff;
-  color: #111;
-  transition: background-color 0.3s, color 0.3s;
 }
 
-/* 🌙 Tamna tema */
+/* ------------------------------ */
+/* 🌞 SVETLA TEMA (podrazumevano) */
+/* ------------------------------ */
+body {
+  background: #f8fafc;
+  color: #111;
+  transition: background 0.4s, color 0.4s;
+}
+
+.card {
+  background: white;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  transition: background 0.4s, color 0.4s;
+}
+
+/* ------------------------------ */
+/* 🌙 TAMNA TEMA */
+/* ------------------------------ */
 body.dark {
-  background-color: #0f172a;
-  color: #f1f5f9;
+  background: #0f172a;
+  color: #e2e8f0;
 }
 
 body.dark .card {
-  background-color: #1e293b;
-  color: #f1f5f9;
-  box-shadow: 0 0 10px rgba(255,255,255,0.1);
+  background: #1e293b;
+  border-color: #334155;
+  color: #e2e8f0;
 }
 
-body.dark header, 
-body.dark footer {
-  background-color: #111827;
-  color: #f8fafc;
-}
+body.dark a { color: #38bdf8; }
+body.dark .muted { color: #94a3b8; }
 
-/* ⭐ Zlatna tema */
+/* ------------------------------ */
+/* ⭐ ZLATNA TEMA */
+/* ------------------------------ */
 body.gold {
-  background-color: #fffbea;
-  color: #3b2f2f;
+  background: #fefce8;
+  color: #4a3000;
 }
 
 body.gold .card {
-  background-color: #fff4cc;
-  color: #3b2f2f;
-  border: 1px solid #facc15;
+  background: #fff8dc;
+  border-color: #facc15;
+  box-shadow: 0 1px 6px rgba(250, 204, 21, 0.4);
 }
 
-body.gold header, 
-body.gold footer {
-  background-color: #facc15;
-  color: #3b2f2f;
-}
-  
+body.gold a { color: #b45309; }
+body.gold .muted { color: #92400e; }
+
+/* ------------------------------ */
+/* Dugmad za promenu teme */
+/* ------------------------------ */
+.theme-selector {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin: 16px 0;
 }
 
+.theme-selector button {
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: none;
+  background: #e2e8f0;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.theme-selector button:hover {
+  background: #cbd5e1;
+}
+
+body.dark .theme-selector button { background: #334155; color: #f1f5f9; }
+body.gold .theme-selector button { background: #fef08a; color: #4a3000; }
