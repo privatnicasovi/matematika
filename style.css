@@ -238,6 +238,24 @@ body.dark .card {
 body.dark a { color: #38bdf8; }
 body.dark .muted { color: #94a3b8; }
 
+/* Popravke za TAMNU TEMU */
+body.dark .exercise {
+  background: #1e293b;
+  border-left: 4px solid #38bdf8;
+  color: #f1f5f9;
+}
+
+body.dark .result.good {
+  background: #14532d;
+  color: #bbf7d0;
+}
+
+body.dark .result.bad {
+  background: #7f1d1d;
+  color: #fecaca;
+}
+
+
 /* ------------------------------ */
 /* ⭐ ZLATNA TEMA */
 /* ------------------------------ */
@@ -280,3 +298,4 @@ body.gold .muted { color: #92400e; }
 
 body.dark .theme-selector button { background: #334155; color: #f1f5f9; }
 body.gold .theme-selector button { background: #fef08a; color: #4a3000; }
+
