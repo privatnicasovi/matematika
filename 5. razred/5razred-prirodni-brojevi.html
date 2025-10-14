@@ -7,22 +7,14 @@
 <link rel="stylesheet" href="style5.css">
 </head>
 
-   <div class="theme-selector container">
-    <button onclick="setTheme('')">🌞 Svetla</button>
-    <button onclick="setTheme('dark')">🌙 Tamna</button>
-    <button onclick="setTheme('gold')">⭐ Zlatna</button>
-  </div>
+   
 
   <!-- 1. Definicija <main class="container">-->
   
 <body>
 
 <header>
-
-  
-  
-  
-  <div class="container">
+    <div class="container">
     <div class="brand">
       <div class="logo">M</div>
       <div>
@@ -39,6 +31,12 @@
   </div>
 </header>
 
+<div class="theme-selector container">
+    <button onclick="setTheme('')">🌞 Svetla</button>
+    <button onclick="setTheme('dark')">🌙 Tamna</button>
+    <button onclick="setTheme('gold')">⭐ Zlatna</button>
+  </div>
+   
 <main class="container">
 
 <!-- 1. Definicija -->
@@ -196,10 +194,20 @@ window.onload = generateTasks;
   <div class="container small">© 2025 Matematika — 5. razred. Napravljeno sa ♥.</div>
 </footer>
 
+<script>
+  // Tema — pamti izbor u localStorage
+  const savedTheme = localStorage.getItem("theme");
+  if (savedTheme) document.body.classList.add(savedTheme);
 
+  function setTheme(theme) {
+    document.body.className = theme;
+    localStorage.setItem("theme", theme);
+  }
+</script>
 
 </body>
 </html>
+
 
 
 
