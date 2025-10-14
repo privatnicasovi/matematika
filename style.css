@@ -279,7 +279,7 @@ body.gold .muted { color: #92400e; }
 .theme-selector {
   display: flex;
   gap: 8px;
-  justify-content: center;
+  justify-content: flex-start; /* poravnava ulevo */
   margin: 16px 0;
 }
 
@@ -298,4 +298,5 @@ body.gold .muted { color: #92400e; }
 
 body.dark .theme-selector button { background: #334155; color: #f1f5f9; }
 body.gold .theme-selector button { background: #fef08a; color: #4a3000; }
+
 
