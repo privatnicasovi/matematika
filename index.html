@@ -198,6 +198,14 @@
   </footer>
 
   <script>
+
+  const savedTheme = localStorage.getItem("theme");
+    if (savedTheme) document.body.classList.add(savedTheme);
+    function setTheme(theme) {
+      document.body.className = theme;
+      localStorage.setItem("theme", theme);
+    }
+    
     // generator zadataka - skupovi (jednostavno)
     function generateSetExercise() {
       const universe = [1,2,3,4,5,6,7,8,9,10,11,12];
@@ -288,6 +296,7 @@
   </script>
 </body>
 </html>
+
 
 
 
