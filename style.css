@@ -1,127 +1,190 @@
-body {
-  font-family: "Segoe UI", sans-serif;
-  background: #f3f4f6;
-  color: #222;
+/* === Osnovni reset === */
+* {
+  box-sizing: border-box;
   margin: 0;
+  padding: 0;
 }
 
-.container {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 16px;
+body {
+  font-family: "Segoe UI", Roboto, sans-serif;
+  line-height: 1.6;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* === Teme === */
+:root {
+  --bg-color: #f5f6f7;
+  --text-color: #222;
+  --accent: #2563eb;
+  --header-bg: linear-gradient(90deg, #1e293b, #334155);
+  --card-bg: #fff;
+  --footer-bg: #1e293b;
+  --footer-text: #cbd5e1;
+  --highlight: #facc15;
+}
+
+body.dark {
+  --bg-color: #1e293b;
+  --text-color: #e2e8f0;
+  --accent: #facc15;
+  --header-bg: linear-gradient(90deg, #0f172a, #1e293b);
+  --card-bg: #334155;
+  --footer-bg: #0f172a;
+  --footer-text: #cbd5e1;
+  --highlight: #2563eb;
+}
+
+body.gold {
+  --bg-color: #fff8e1;
+  --text-color: #3e2723;
+  --accent: #ffb300;
+  --header-bg: linear-gradient(90deg, #fbc02d, #f57f17);
+  --card-bg: #fffde7;
+  --footer-bg: #f57f17;
+  --footer-text: #fff3cd;
+  --highlight: #3e2723;
+}
+
+/* === Struktura === */
+body {
+  background: var(--bg-color);
+  color: var(--text-color);
 }
 
 header {
-  background: #111;
-  color: #ffb300;
-  padding: 20px 0;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  background: var(--header-bg);
+  color: #fff;
+  padding: 15px 0;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .brand {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-bottom: 12px;
 }
 
 .logo {
-  font-size: 36px;
-  font-weight: bold;
-  background: #ffb300;
+  background: var(--highlight);
   color: #111;
-  padding: 8px 16px;
-  border-radius: 8px;
-}
-
-h1 {
-  color: #ffb300;
-  text-shadow: 1px 1px 2px #000, -1px -1px 2px #000;
-  margin: 0;
-}
-
-.subtitle {
-  color: #ffb300;
-  text-shadow: 1px 1px 1px #000;
-  font-size: 15px;
-}
-
-nav a {
-  color: #ffb300;
-  text-decoration: none;
-  margin-right: 15px;
   font-weight: bold;
+  font-size: 24px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
 }
 
-nav a:hover {
-  text-decoration: underline;
+/* Navigacija */
+header nav a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 20px;
+  font-size: 15px;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+header nav a:hover {
+  color: var(--highlight);
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 20px;
-  margin-top: 20px;
+/* === Glavni sadržaj === */
+.container {
+  width: 95%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 15px;
 }
 
 .card {
-  background: white;
-  padding: 16px;
-  border-radius: 10px;
-  box-shadow: 0 1px 6px rgba(0,0,0,0.1);
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 18px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  margin-bottom: 20px;
 }
 
-.card img {
-  width: 100%;
-  height: auto;
-  border-radius: 8px; /* opcionalno, zaobljeni uglovi */
+h1, h2, h3 {
+  color: var(--text-color);
 }
 
-.card.small {
-  background: #fefce8;
-}
-
-h2, h3 {
-  color: #333;
-}
-
+/* Dugmad */
 .btn {
-  background: #ffd700;
+  background: var(--accent);
+  color: #fff;
   border: none;
   padding: 8px 14px;
   border-radius: 8px;
   cursor: pointer;
-  font-weight: bold;
-  transition: 0.3s;
+  font-size: 14px;
+  transition: background 0.2s ease;
 }
-
 .btn:hover {
-  background: #ffcf33;
+  filter: brightness(0.9);
 }
 
-.btn.green {
-  background: #10b981;
-  color: white;
+/* === Selektor teme === */
+.theme-selector {
+  margin: 10px 0;
+}
+.theme-selector button {
+  margin-right: 8px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: background 0.2s ease;
+}
+.theme-selector button:hover {
+  background: var(--highlight);
+  color: #111;
 }
 
-.result.good {
-  color: #16a34a;
-}
-.result.bad {
-  color: #dc2626;
-}
-
+/* Footer */
 footer {
+  background: var(--footer-bg);
+  color: var(--footer-text);
   text-align: center;
   padding: 15px;
-  background: #111;
-  color: #ffd700;
-  margin-top: 30px;
+  font-size: 0.9em;
+  border-top: 2px solid var(--highlight);
 }
 
+/* Responsive */
+@media (max-width: 768px) {
+  header nav a {
+    margin-left: 10px;
+    font-size: 14px;
+  }
+  .logo {
+    width: 36px;
+    height: 36px;
+    font-size: 20px;
+  }
+}
+🟩 JavaScript za biranje teme
+Uključi ispod <footer> u svakoj 5. razred stranici:
 
+html
+Копирај кȏд
 <script>
-  // Tema
+  // Ako postoji prethodno izabrana tema
   const savedTheme = localStorage.getItem("theme");
   if (savedTheme) document.body.classList.add(savedTheme);
 
@@ -130,7 +193,3 @@ footer {
     localStorage.setItem("theme", theme);
   }
 </script>
-
-
-
-
