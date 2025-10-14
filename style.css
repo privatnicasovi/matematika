@@ -1,58 +1,19 @@
-/* === Osnovni reset === */
+/* --- Osnovni stilovi --- */
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 
 body {
   font-family: "Segoe UI", Roboto, sans-serif;
+  margin: 0;
+  background: #f5f6f7;
+  color: #222;
   line-height: 1.6;
-  transition: background 0.3s ease, color 0.3s ease;
 }
 
-/* === Teme === */
-:root {
-  --bg-color: #f5f6f7;
-  --text-color: #222;
-  --accent: #2563eb;
-  --header-bg: linear-gradient(90deg, #1e293b, #334155);
-  --card-bg: #fff;
-  --footer-bg: #1e293b;
-  --footer-text: #cbd5e1;
-  --highlight: #facc15;
-}
-
-body.dark {
-  --bg-color: #1e293b;
-  --text-color: #e2e8f0;
-  --accent: #facc15;
-  --header-bg: linear-gradient(90deg, #0f172a, #1e293b);
-  --card-bg: #334155;
-  --footer-bg: #0f172a;
-  --footer-text: #cbd5e1;
-  --highlight: #2563eb;
-}
-
-body.gold {
-  --bg-color: #fff8e1;
-  --text-color: #3e2723;
-  --accent: #ffb300;
-  --header-bg: linear-gradient(90deg, #fbc02d, #f57f17);
-  --card-bg: #fffde7;
-  --footer-bg: #f57f17;
-  --footer-text: #fff3cd;
-  --highlight: #3e2723;
-}
-
-/* === Struktura === */
-body {
-  background: var(--bg-color);
-  color: var(--text-color);
-}
-
+/* --- Zaglavlje --- */
 header {
-  background: var(--header-bg);
+  background: linear-gradient(90deg, #1e293b, #334155);
   color: #fff;
   padding: 15px 0;
   box-shadow: 0 2px 6px rgba(0,0,0,0.25);
@@ -75,7 +36,7 @@ header .container {
 }
 
 .logo {
-  background: var(--highlight);
+  background: #facc15;
   color: #111;
   font-weight: bold;
   font-size: 24px;
@@ -88,7 +49,6 @@ header .container {
   box-shadow: 0 2px 5px rgba(0,0,0,0.3);
 }
 
-/* Navigacija */
 header nav a {
   color: #fff;
   text-decoration: none;
@@ -97,11 +57,12 @@ header nav a {
   font-weight: 500;
   transition: color 0.2s ease;
 }
+
 header nav a:hover {
-  color: var(--highlight);
+  color: #facc15;
 }
 
-/* === Glavni sadržaj === */
+/* --- Glavni sadržaj --- */
 .container {
   width: 95%;
   max-width: 1200px;
@@ -109,21 +70,46 @@ header nav a:hover {
   padding: 15px;
 }
 
+.grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+}
+
 .card {
-  background: var(--card-bg);
+  background: #fff;
   border-radius: 12px;
   padding: 18px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-  margin-bottom: 20px;
 }
 
+.card.small {
+  padding: 12px;
+}
+
+/* --- Tekst --- */
 h1, h2, h3 {
-  color: var(--text-color);
+  margin-top: 0;
+  color: #1e293b;
 }
 
-/* Dugmad */
+.muted {
+  color: #555;
+}
+
+.small {
+  font-size: 0.9em;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #e5e7eb;
+  margin: 15px 0;
+}
+
+/* --- Dugmad --- */
 .btn {
-  background: var(--accent);
+  background: #2563eb;
   color: #fff;
   border: none;
   padding: 8px 14px;
@@ -132,64 +118,89 @@ h1, h2, h3 {
   font-size: 14px;
   transition: background 0.2s ease;
 }
+
 .btn:hover {
-  filter: brightness(0.9);
+  background: #1d4ed8;
 }
 
-/* === Selektor teme === */
-.theme-selector {
-  margin: 10px 0;
-}
-.theme-selector button {
-  margin-right: 8px;
-  background: var(--accent);
-  color: #fff;
-  border: none;
-  padding: 6px 10px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 13px;
-  transition: background 0.2s ease;
-}
-.theme-selector button:hover {
-  background: var(--highlight);
-  color: #111;
+/* --- Vežbe --- */
+.exercise {
+  background: #f9fafb;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 12px;
+  border-left: 4px solid #2563eb;
 }
 
-/* Footer */
+.result {
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.result.good {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.result.bad {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+/* --- Spisak linkova --- */
+ul.plain {
+  list-style: none;
+  padding: 0;
+}
+
+ul.plain li {
+  margin-bottom: 6px;
+}
+
+/* --- Venn dijagram --- */
+.venn-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+.venn-svg {
+  width: 150px;
+  height: 100px;
+}
+
+/* --- Footer --- */
 footer {
-  background: var(--footer-bg);
-  color: var(--footer-text);
+  background: #1e293b;
+  color: #cbd5e1;
   text-align: center;
   padding: 15px;
+  margin-top: 25px;
   font-size: 0.9em;
-  border-top: 2px solid var(--highlight);
+  border-top: 2px solid #facc15;
 }
 
-/* Responsive */
+/* --- Responsive (mobilni) --- */
 @media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  header nav {
+    margin-top: 10px;
+  }
+
   header nav a {
     margin-left: 10px;
     font-size: 14px;
   }
+
   .logo {
     width: 36px;
     height: 36px;
     font-size: 20px;
   }
 }
-🟩 JavaScript za biranje teme
-Uključi ispod <footer> u svakoj 5. razred stranici:
-
-html
-Копирај кȏд
-<script>
-  // Ako postoji prethodno izabrana tema
-  const savedTheme = localStorage.getItem("theme");
-  if (savedTheme) document.body.classList.add(savedTheme);
-
-  function setTheme(theme) {
-    document.body.className = theme;
-    localStorage.setItem("theme", theme);
-  }
-</script>
